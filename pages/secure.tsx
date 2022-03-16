@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export async function getStaticProps() {
   return {
-    props: {secure: false}
+    props: {secure: true}
   }
 }
 
