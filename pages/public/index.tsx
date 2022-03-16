@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export async function getStaticProps() {
   return {
-    props: {secure: true}
+    props: {private: false}
   }
 }
 
@@ -16,7 +16,7 @@ export default function Page() {
       </Head>
 
       <main>
-        hi
+        public
       </main>
     </div>
   )

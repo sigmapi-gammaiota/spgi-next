@@ -1,8 +1,14 @@
 import Head from 'next/head'
+import { getDefaultProps } from '../../lib/defaultProps'
+import { MessageLevels, MessageProps } from '../../components/Message'
 
 export async function getStaticProps() {
+  let p = getDefaultProps()
+  p.navLinks.push({ href: "/", text: "home" })
+  p.messages.push({ text: "test", level: MessageLevels.Err })
+
   return {
-    props: {secure: false}
+    props: p
   }
 }
 
@@ -16,7 +22,7 @@ export default function Page() {
       </Head>
 
       <main>
-        hi
+        private
       </main>
     </div>
   )
