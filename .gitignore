@@ -31,9 +31,13 @@ yarn-error.log*
 .env.dev.local
 .env.test.local
 .env.production.local
+.env.prod
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
+
+# docker
+db-data/

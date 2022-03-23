@@ -6,4 +6,4 @@ WIP:
 
 this will install necessary dependencies
 
-change .env to .env.dev.local for the purposes of local development.
+WHEN RUNNING PRODUCTION, change .env to .env.prod
