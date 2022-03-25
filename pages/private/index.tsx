@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { getDefaultProps } from "../../lib/defaultProps";
+import { getDefaultProps } from "../../utils/defaultProps";
 import { MessageLevels, MessageProps } from "../../components/Message";
 
 export async function getStaticProps() {
