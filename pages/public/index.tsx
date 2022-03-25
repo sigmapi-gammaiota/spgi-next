@@ -1,9 +1,9 @@
-import Head from 'next/head'
+import Head from "next/head";
 
 export async function getStaticProps() {
   return {
-    props: {private: false}
-  }
+    props: { private: false },
+  };
 }
 
 export default function Page() {
@@ -15,9 +15,7 @@ export default function Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        public
-      </main>
+      <main>public</main>
     </div>
-  )
+  );
 }

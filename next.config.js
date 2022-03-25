@@ -4,11 +4,11 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/',
-        destination: '/public',
+        source: "/",
+        destination: "/public",
       },
-    ]
-  }
-}
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

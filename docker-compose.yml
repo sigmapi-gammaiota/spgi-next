@@ -1,18 +1,17 @@
 # USE FOR LOCAL DEVELOPMENT ONLY. MANAGED SERVICE FOR PRODUCTION INSTALL
 
-version: '3'
+version: "3"
 
 services:
-  
   db:
-    image: 'postgres:latest'
+    image: "postgres:latest"
 
     ports:
       - 5432:5432
 
     environment:
-      POSTGRES_USER: testuser 
-      POSTGRES_PASSWORD: testpass 
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
       POSTGRES_DB: spgi
     volumes:
       - ./db-data/:/var/lib/postgresql/data/

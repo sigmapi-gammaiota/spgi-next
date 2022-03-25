@@ -1,15 +1,15 @@
-import Head from 'next/head'
-import { getDefaultProps } from '../../lib/defaultProps'
-import { MessageLevels, MessageProps } from '../../components/Message'
+import Head from "next/head";
+import { getDefaultProps } from "../../lib/defaultProps";
+import { MessageLevels, MessageProps } from "../../components/Message";
 
 export async function getStaticProps() {
-  let p = getDefaultProps()
-  p.navLinks.push({ href: "/", text: "home" })
-  p.messages.push({ text: "test", level: MessageLevels.Err })
+  let p = getDefaultProps();
+  p.navLinks.push({ href: "/", text: "home" });
+  p.messages.push({ text: "test", level: MessageLevels.Err });
 
   return {
-    props: p
-  }
+    props: p,
+  };
 }
 
 export default function Page() {
@@ -21,9 +21,7 @@ export default function Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        private
-      </main>
+      <main>private</main>
     </div>
-  )
+  );
 }
