@@ -2,7 +2,7 @@
 
 This message is aimed mostly to the Brothers of Sigma Pi in the Web-Tech committee. All contributions are still welcome, so we will refer generally to "developers" as a catch-all term.
 
-This website aims to be much simpler for developers to implement new features and keep old ones up to date. The previous website used Django and was a challenge to maintain for a variety of reasons. Therefore, we (the current developers) have addressed 4 main principles we want everyone (new *and* current) to follow when contributing to this project.
+This website aims to be much simpler for developers to implement new features and keep old ones up to date. The previous website used Django and was a challenge to maintain for a variety of reasons. Therefore, we (the current developers) have addressed 4 main principles we want everyone (new _and_ current) to follow when contributing to this project.
 
 ## P1: Understand before Designing (RTFM)
 

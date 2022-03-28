@@ -45,5 +45,4 @@ These are the technologies and dependencies we leverage to make this website run
 | prisma/        | Prisma files (models and migrations)                                                                                                                                                                                    |
 | public/        | **Public** staticfiles distributed across the Vercel CDN. **Private/uploaded** files should be stored via S3 and behind authenticated pages                                                                             |
 | styles/        | global stylesheets, prefer component styling, see [Tailwind docs](https://tailwindcss.com/docs/reusing-styles) and [STYLE](docs/STYLE.md)                                                                               |
-| utils/        | utility functions/methods/classes that aren't part of a full-featured library (stored in lib)                                              |
-
+| utils/         | utility functions/methods/classes that aren't part of a full-featured library (stored in lib)                                                                                                                           |

@@ -1,16 +1,27 @@
 import Head from "next/head";
-import { getDefaultProps } from "../../utils/defaultProps";
-import { MessageLevels, MessageProps } from "../../components/Message";
+import { getDefaultPrivateProps } from "../../utils/defaultProps";
+import { MessageLevels } from "../../components/Message";
+import { GetServerSideProps } from "next/types";
 
-export async function getStaticProps() {
-  let p = getDefaultProps();
-  p.navLinks.push({ href: "/", text: "home" });
-  p.messages.push({ text: "test", level: MessageLevels.Err });
-
-  return {
-    props: p,
-  };
-}
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  let p = await getDefaultPrivateProps(ctx);
+  if (p.private) {
+    //private page
+    p.navLinks.push({ href: "/", text: "home" });
+    p.messages.push({ text: "test", level: MessageLevels.Err });
+    return {
+      props: p,
+    };
+  } else {
+    //redirect to login
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+};
 
 export default function Page() {
   return (

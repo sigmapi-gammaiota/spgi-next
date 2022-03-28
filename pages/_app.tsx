@@ -2,24 +2,29 @@ import "../styles/globals.css";
 import PublicLayout from "../components/PublicLayout";
 import type { AppProps } from "next/app";
 import PrivateLayout from "../components/PrivateLayout";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   if (pageProps.private) {
     if (pageProps.navLinks && pageProps.messages) {
       return (
-        <PrivateLayout
-          navLinks={pageProps.navLinks}
-          messages={pageProps.messages}
-        >
-          <Component {...pageProps} />
-        </PrivateLayout>
+        <SessionProvider session={session}>
+          <PrivateLayout
+            navLinks={pageProps.navLinks}
+            messages={pageProps.messages}
+          >
+            <Component {...pageProps} />
+          </PrivateLayout>
+        </SessionProvider>
       );
     }
   } else {
     return (
-      <PublicLayout>
-        <Component {...pageProps} />
-      </PublicLayout>
+      <SessionProvider session={session}>
+        <PublicLayout>
+          <Component {...pageProps} />
+        </PublicLayout>
+      </SessionProvider>
     );
   }
 }

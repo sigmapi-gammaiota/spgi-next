@@ -7,3 +7,7 @@ WIP:
 this will install necessary dependencies
 
 WHEN RUNNING PRODUCTION, change .env to .env.prod
+
+when running prisma with required .env, provide via
+`dotenv -e <.env file> -- npx prisma <prisma command>`
+pretty sure this is because there's more than one dotfile in the main dir

@@ -1,10 +1,13 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { getDefaultPublicProps } from "../../utils/defaultProps";
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
+  let p = getDefaultPublicProps();
   return {
-    props: { private: false },
+    props: p,
   };
-}
+};
 
 export default function Page() {
   return (

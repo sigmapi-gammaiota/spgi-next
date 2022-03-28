@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { MessageProps, Message } from "./Message";
 
@@ -24,6 +25,7 @@ const PrivateLayout = ({
                 </Link>
               );
             })}
+          <button onClick={() => signOut()}>Sign Out</button>
         </nav>
       </div>
       <div>
