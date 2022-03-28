@@ -47,6 +47,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  isValid       Boolean //used for prototype checking in next-auth
   }
 
 model VerificationRequest {

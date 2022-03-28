@@ -27,31 +27,38 @@ export default NextAuth({
   ],
   adapter: PrismaAdapter(prisma),
 
-  // callbacks: {
-  //   async signIn({ user, account, profile, email, credentials }) {
-  //     //TODO: check if email prop is true so we know if we're using email provider
-  //     //check if email in signin request
-  //     if (user.email) {
-  //       //grab user's email from prisma db
-  //       let dbUserEmail = await prisma.user.findFirst({
-  //         where: { email: user.email },
-  //         select: { email: true },
-  //       });
-
-  //       // TODO: validate email sign in works only for users in db or admin emails
-  //       // TODO: add system to add users not in admin_emails
-  //       if (dbUserEmail) {
-  //         return true; //user exists in db, they can log in
-  //       } else {
-  //         if (process.env.ADMIN_EMAILS?.includes(user.email)) {
-  //           return true; //admin email login
-  //         } else {
-  //           return false; //invalid login, not admin or user in  db
-  //         }
-
-  //         // check if using an admin email
-  //       }
-  //     } else return false; //need email field for login
-  //   },
-  // },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      //use redirect to interrupt flow for signin?
+      if (email && user.email) {
+        //magic email login, check admin list first
+        if (process.env.ADMIN_EMAILS?.includes(user.email)) {
+          //todo: validate this is a secure paradigm
+          return true; //admin email login
+        }
+        //not admin, check user object from prisma adapter
+        if (user.isValid) {
+          //we SHOULD be working with a non-prototype user from prisma adapter
+          //todo: validate non-prototype
+          //this means we continue with login since it was a successful auth from db source
+          return true;
+        } else {
+          //user object doesn't have isValid prop
+          //assume is a prototype meaning new user
+          //check user from db manually
+          let dbUserEmail = await prisma.user.findFirst({
+            where: { email: user.email },
+            select: { email: true },
+          });
+          if (dbUserEmail) {
+            //user email in db, we allow login (ignore email.isVerificationRequest, could be first signin)
+            return true;
+          } else return "/"; //user not in DB, not admin, deny signin and redirect to homepage
+        }
+      } else if (profile) {
+        //todo: how slack login?
+      }
+      return false;
+    },
+  },
 });
