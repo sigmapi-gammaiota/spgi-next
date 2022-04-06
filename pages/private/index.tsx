@@ -1,14 +1,12 @@
 import Head from "next/head";
-import { getDefaultPrivateProps } from "../../utils/defaultProps";
+import { getPrivateProps } from "../../lib/NextProps";
 import { MessageLevels } from "../../components/Message";
 import { GetServerSideProps } from "next/types";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  let p = await getDefaultPrivateProps(ctx);
+  let p = await getPrivateProps(ctx);
   if (p.private) {
     //private page
-    p.navLinks.push({ href: "/", text: "home" });
-    p.messages.push({ text: "test", level: MessageLevels.Err });
     return {
       props: p,
     };

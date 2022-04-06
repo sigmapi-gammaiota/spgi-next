@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { getDefaultPublicProps } from "../../utils/defaultProps";
+import { getDefaultPublicProps } from "../../lib/NextProps";
 
 export const getStaticProps: GetStaticProps = async () => {
   let p = getDefaultPublicProps();
