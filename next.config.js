@@ -7,6 +7,18 @@ const nextConfig = {
         source: "/",
         destination: "/public",
       },
+      {
+        source: "/about",
+        destination: "/public/about",
+      },
+      {
+        source: "/philanthropy",
+        destination: "/public/philanthropy",
+      },
+      {
+        source: "/rush",
+        destination: "/public/rush",
+      },
     ];
   },
 };

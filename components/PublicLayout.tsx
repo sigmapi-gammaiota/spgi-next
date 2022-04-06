@@ -13,7 +13,7 @@ const PublicLayout = ({ children }: { children: any }) => {
   const { status } = useSession();
 
   return (
-    <div>
+    <div className="grid">
       <nav className="flex">
         {publicNavLinks.map((nl) => {
           return (
@@ -36,7 +36,8 @@ const PublicLayout = ({ children }: { children: any }) => {
           )}
         </div>
       </nav>
-      <main>{children}</main>
+      <main className="container mx-1">{children}</main>
+      <footer className="fixed bottom-0 mx-1">Footer</footer>
     </div>
   );
 };

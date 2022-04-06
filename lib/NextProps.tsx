@@ -3,17 +3,20 @@ import { getSession, GetSessionParams } from "next-auth/react";
 import { MessageProps } from "../components/Message";
 import { PrismaClient } from "@prisma/client";
 import { PrivateLink, AllPrivateLinks, Roles } from "./RoleRouter";
+import { text } from "stream/consumers";
 
 const prisma = new PrismaClient();
-interface PrivateProps {
+export interface PrivateProps {
   private: boolean;
-  navLinks: PrivateLink[];
+  title: String;
+  navLinks: { text: String; href: String }[]; //instead of passing PrivateLink we need to use json to be serializeable >:(
   messages: [MessageProps?];
   session: Session | null;
 }
 
-interface PublicProps {
+export interface PublicProps {
   private: boolean;
+  title: String;
 }
 
 /**
@@ -26,28 +29,32 @@ export async function getPrivateProps(
 ): Promise<PrivateProps> {
   let session = await getSession(ctx); //grab session for SessionProvider
   let priv = session ? true : false; //private determined by session
-  let userLinks: PrivateLink[] = [];
+  let userLinks: { text: String; href: String }[] = [];
+
   if (priv && session) {
     let userRoles = await prisma.user.findFirst({
       where: { email: session.user?.email!! },
       select: { roles: true },
     });
-    userRoles?.roles.map((userRole) => {
-      //for each user role
-      AllPrivateLinks.map((privateLink) => {
-        //for each link in all private links
-        if (
-          privateLink.roles.includes("ALL") ||
-          privateLink.roles.some((allowedRoles) => {
-            //first, check if link should be available to all users by default
 
-            //otherwise check for each allowed role on that link
+    AllPrivateLinks.map((privateLink) => {
+      //for each link in all private links
+      if (privateLink.roles.includes("ALL")) {
+        userLinks.push({ text: privateLink.text, href: privateLink.href }); //add link if available to all
+      }
+
+      //if not available to all
+      userRoles?.roles.map((userRole) => {
+        //for each user role
+        if (
+          privateLink.roles.some((allowedRoles) => {
+            //check for each allowed role on that link
             //return true when userRole is in list of allowed roles in a given private link
             return userRole == allowedRoles;
           })
         ) {
           //add link to userLinks on true
-          userLinks.push(privateLink);
+          userLinks.push({ text: privateLink.text, href: privateLink.href });
         }
       });
     });
@@ -55,6 +62,7 @@ export async function getPrivateProps(
 
   let props: PrivateProps = {
     private: priv,
+    title: "",
     navLinks: userLinks,
     messages: [],
     session: session,
@@ -65,6 +73,7 @@ export async function getPrivateProps(
 export function getDefaultPublicProps(): PublicProps {
   let props: PublicProps = {
     private: false,
+    title: "",
   };
   return props;
 }

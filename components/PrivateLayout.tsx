@@ -1,10 +1,13 @@
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { Key } from "react";
+import { Url } from "url";
+import { PrivateLink } from "../lib/RoleRouter";
 import { MessageProps, Message } from "./Message";
 
 interface PrivateLayoutProps {
   children: any;
-  navLinks: [{ text: string; href: string }];
+  navLinks: { text: String; href: String }[];
   messages: [MessageProps];
 }
 
@@ -15,19 +18,25 @@ const PrivateLayout = ({
 }: PrivateLayoutProps) => {
   return (
     <>
-      <div className="header">
-        <nav>
+      <header>
+        <nav className="flex">
           {navLinks &&
             navLinks.map((nl) => {
+              //todo: check "as unknown as Key", seems clunky
               return (
-                <Link key={nl.href} href={nl.href}>
-                  {nl.text}
-                </Link>
+                <div
+                  key={nl.href as unknown as Key}
+                  className="mx-1 hover:underline"
+                >
+                  <Link href={nl.href as unknown as Url}>{nl.text}</Link>
+                </div>
               );
             })}
-          <button onClick={() => signOut()}>Sign Out</button>
+          <button onClick={() => signOut()} className="mx-1 hover:underline">
+            Sign Out
+          </button>
         </nav>
-      </div>
+      </header>
       <div>
         {messages &&
           messages.map((m) => {

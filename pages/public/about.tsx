@@ -3,11 +3,12 @@ import { getDefaultPublicProps } from "../../lib/NextProps";
 
 export const getStaticProps: GetStaticProps = async () => {
   let p = getDefaultPublicProps();
+  p.title = "About";
   return {
     props: p,
   };
 };
 
 export default function Page() {
-  return <div>public</div>;
+  return <div>About</div>;
 }
