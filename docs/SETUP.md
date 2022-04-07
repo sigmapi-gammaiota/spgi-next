@@ -1,6 +1,16 @@
 # How to set up your environment
 
-WIP:
+## Prerequisites
+
+You will need:
+
+- npm
+- docker
+- docker-compose
+
+## Setup Steps
+
+### Step 1
 
 `npm install`
 
