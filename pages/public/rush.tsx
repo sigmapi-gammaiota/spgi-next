@@ -10,5 +10,5 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Page() {
-  return <div>Rush</div>;
+  return <div>Rush, Kai :)</div>;
 }
