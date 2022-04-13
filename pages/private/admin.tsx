@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next/types";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let p = await getPrivateProps(ctx);
-  p.title = "Home";
+  p.title = "Admin";
   if (p.private) {
     //private page
     return {
@@ -22,5 +22,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 export default function Page() {
-  return <div></div>;
+  return <div>admin</div>;
 }

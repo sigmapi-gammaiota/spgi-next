@@ -16,4 +16,10 @@ export class PrivateLink {
 
 export const AllPrivateLinks: Readonly<PrivateLink[]> = [
   new PrivateLink("/", "Home", ["ALL"]),
+  new PrivateLink("/admin", "Admin", ["ADMIN"])
 ];
+
+export async function checkRoleAccess(prisma:PrismaClient,email:string,roles:[Roles]){
+  let userRoles = await prisma.user.findFirst({where:{email:email}, select:{roles:true}})
+  //TODO: return if user roles match function input param roles
+}
