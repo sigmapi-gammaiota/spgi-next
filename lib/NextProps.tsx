@@ -1,6 +1,5 @@
 import { Session } from "next-auth";
 import { getSession, GetSessionParams } from "next-auth/react";
-import { MessageProps } from "../components/Message";
 import { PrismaClient } from "@prisma/client";
 import { PrivateLink, AllPrivateLinks, Roles } from "./RoleRouter";
 import { text } from "stream/consumers";
@@ -10,7 +9,6 @@ export interface PrivateProps {
   private: boolean;
   title: String;
   navLinks: { text: String; href: String }[]; //instead of passing PrivateLink we need to use json to be serializeable >:(
-  messages: [MessageProps?];
   session: Session | null;
 }
 
@@ -64,7 +62,6 @@ export async function getPrivateProps(
     private: priv,
     title: "",
     navLinks: userLinks,
-    messages: [],
     session: session,
   };
   return props;
