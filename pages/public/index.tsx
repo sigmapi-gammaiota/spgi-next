@@ -9,5 +9,5 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Page() {
-  return <div>public</div>;
+  return <div>public (kyle)</div>;
 }
