@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <div>
-      <div className="w-full h-96 flex flex-col justify-center items-center gap-6 bg-[#3E395F] text-white">
+      <div className="w-full h-96 flex flex-col justify-center items-center gap-6 bg-purple-900 text-white">
         <h1 className="text-5xl">Rush Sigma Pi</h1>
         <div className="flex gap-4">
           <button className="p-4 bg-green-500 rounded-3xl">Interest Form</button>
@@ -33,7 +33,7 @@ export default function Page() {
         <p>Come on down to lunches (11:30AM) and dinners (5:30PM) Monday through Friday! No commitment, we'd just love to chat with you and get you some free food!</p>
       </div>
 
-      <div className="py-16 px-32 bg-[#EEEEEE] flex flex-wrap gap-6">
+      <div className="py-16 px-32 bg-neutral-200 flex flex-wrap gap-6">
         <div className="grow">
           <h2 className="text-3xl">Events</h2>
           <ul className="list-disc pl-6">
@@ -65,7 +65,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="py-16 px-32 bg-[#EEEEEE]">
+      <div className="py-16 px-32 bg-neutral-200">
         <h2 className="text-3xl">FAQ</h2>
 
         <i>Do I need to have or know anything for the events?</i>
