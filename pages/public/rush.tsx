@@ -85,7 +85,6 @@ export default function Page() {
           <li>Sam Losh: stlosh@wpi.edu</li>
           <li>Luke Hoy: lahoy@wpi.edu</li>
         </ul>
-        <p>If you need accommodations, please contact Alex Nieto at (720)-878-5810</p>
       </div>
     </div>
   );
