@@ -37,7 +37,9 @@ const PublicLayout = ({ children }: { children: any }) => {
         </div>
       </nav>
       <main className="container mx-1">{children}</main>
-      <footer className="fixed bottom-0 mx-1">Footer</footer>
+      <footer className="fixed text-center bottom-0 min-w-full mx-1 bg-slate-200">Our Values<br/>
+Scholarship | Chivalry | Culture | Character | Service<br/>
+<em>Copyright 2019 Gamma Iota Chapter of Sigma Pi Fraternity</em></footer>
     </div>
   );
 };
