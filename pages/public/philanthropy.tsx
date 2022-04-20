@@ -10,7 +10,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Page() {
-  return <div className="py-6 px-4">
+  return <div className="">
     <div className="w-full h-28 flex flex-col justify-center items-center gap-6 bg-purple-900 text-white"><h1 className="text-5xl bold">Philanthropy</h1></div>
 <div className="max-w-6xl mx-auto grid grid-cols-1">
   <h2 className="text-2xl mt-5">Overview</h2>
