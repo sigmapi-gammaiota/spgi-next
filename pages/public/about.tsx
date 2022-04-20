@@ -1,8 +1,5 @@
 import { GetStaticProps } from "next";
 import { getDefaultPublicProps } from "../../lib/NextProps";
-import { FaDiscord, FaInstagram } from 'react-icons/fa';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 
 export const getStaticProps: GetStaticProps = async () => {
   let p = getDefaultPublicProps();
