@@ -14,8 +14,8 @@ export const getStaticProps: GetStaticProps = async () => {
       */
 
 export default function Page() {
-  return <div>public (kyle)
-      <h2>Welcome to Sigma Pi</h2>
+  return <div>
+      <h2 className="text-2xl text-purple-900 mt-10">Welcome to Sigma Pi</h2>
       <p>
           Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, 
           a local fraternity comprised of like-minded individuals at 
@@ -26,7 +26,7 @@ export default function Page() {
           of Sigma Pi Fraternity. After another year, on May 1st, 1965, 
           Psi Theta Nu received its charter from Sigma Pi Fraternity.
         </p>
-        <h2>In Memory of Jyn Godin</h2>
+        <h2 className="text-2xl text-purple-900 mt-10">In Memory of Jyn Godin</h2>
         <p>
         Born on December 23rd, 2000, Jyn brought twenty years of joy to all those around them. They joined our chapter in the fall of 2019 as a member of Sigma class. Jyn was part of a group where they could freely learn and share their passions with others. Jyn embodied the culture and character of Sigma Pi; the absence of their enthusiasm and care is felt every day.
         Jyn is not just our friend, they are our brother, and they always will be.

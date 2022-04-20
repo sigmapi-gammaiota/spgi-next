@@ -14,19 +14,20 @@ const PublicLayout = ({ children }: { children: any }) => {
 
   return (
     <div className="grid">
-      <nav className="flex">
+      <nav className="flex bg-slate-200 justify-center pt-10 pb-5">
+      <img src="https://sigmapigammaiota.org/static/img/logo.svg" width="150" height="50" className="mr-10 ml-10"/> 
         {publicNavLinks.map((nl) => {
           return (
-            <div key={nl.href} className="mx-1 hover:underline">
+            <div key={nl.href} className="mx-1 text-purple-900 link-underline link-underline-black ml-5 mr-5">
               <Link href={nl.href}>{nl.text}</Link>
             </div>
           );
         })}
-        <div className="mx-1 hover:underline">
+        <div className="mx-1 text-purple-900 link-underline link-underline-black ml-5 mr-5">
           {status == "authenticated" && <Link href="private">Private</Link>}
           {status == "unauthenticated" && (
             <button
-              className="hover:underline"
+              className=""
               onClick={() => {
                 signIn(undefined, { callbackUrl: "/private" });
               }}
