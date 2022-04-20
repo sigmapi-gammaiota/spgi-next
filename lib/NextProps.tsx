@@ -1,15 +1,15 @@
 import { Session } from "next-auth";
 import { getSession, GetSessionParams } from "next-auth/react";
 import { PrismaClient } from "@prisma/client";
-import { PrivateLink, AllPrivateLinks, Roles } from "./RoleRouter";
-import { text } from "stream/consumers";
+import { AllPrivateLinks, Roles, getUserRoles } from "./RoleRouter";
 
 const prisma = new PrismaClient();
 export interface PrivateProps {
-  private: boolean;
-  title: String;
-  navLinks: { text: String; href: String }[]; //instead of passing PrivateLink we need to use json to be serializeable >:(
-  session: Session | null;
+  private: boolean; //true if session found, false should redirect to public or login page
+  title: String; //to be set by caller of getPrivateProps
+  navLinks: { text: String; href: String }[]; //serializeable private link structure, unique to user found via session ctx or empty if no session
+  userRoles: Roles[]; // roles for the current session's user
+  session: Session | null; //session from context for conditional rendering
 }
 
 export interface PublicProps {
@@ -18,53 +18,71 @@ export interface PublicProps {
 }
 
 /**
- * Sets up props for role-based navbar, and init for in-page status messaging
- * @param ctx passthrough of getServerSideProps context. used by getSession() to determine if private routing is allowed
- * @returns PrivateProps object where private==true when getSession() returns a not-null session. Redirect if private==false. Includes empty navLinks and Messages arrays for other libraries to fill from context
+ * Gets props for role-based navbar, validating user session and role based routing
+ * @param ctx passthrough of getServerSideProps context. used by getSession() for authentication/authorization
+ * @returns PrivateProps object where private==true when getSession() returns a not-null session and user is allowed to access page. Redirect when private==false.
  */
 export async function getPrivateProps(
   ctx: GetSessionParams | undefined
 ): Promise<PrivateProps> {
-  let session = await getSession(ctx); //grab session for SessionProvider
-  let priv = session ? true : false; //private determined by session
-  let userLinks: { text: String; href: String }[] = [];
+  let session = await getSession(ctx);
 
-  if (priv && session) {
-    let userRoles = await prisma.user.findFirst({
-      where: { email: session.user?.email!! },
-      select: { roles: true },
-    });
+  if (session) {
+    let userEmail: string = session?.user?.email!!; //session should have user account, which should have email
+    let userRoles: Roles[] = await getUserRoles(prisma, userEmail); //get user roles via email query
 
+    console.log(ctx?.req?.url);
+
+    let userNavLinks: { text: String; href: String }[] = []; //list of valid links for a given user
     AllPrivateLinks.map((privateLink) => {
       //for each link in all private links
+
       if (privateLink.roles.includes("ALL")) {
-        userLinks.push({ text: privateLink.text, href: privateLink.href }); //add link if available to all
+        userNavLinks.push({ text: privateLink.text, href: privateLink.href }); //add link if available to all
+        return; //early return from mapping function, move on
       }
 
-      //if not available to all
-      userRoles?.roles.map((userRole) => {
-        //for each user role
+      //if link not available to all users
+      userRoles.map((userRole) => {
+        //check each user role
         if (
           privateLink.roles.some((allowedRoles) => {
-            //check for each allowed role on that link
-            //return true when userRole is in list of allowed roles in a given private link
+            //check if link allows user role
+            //if this returns true, user is allowed to use this link since their roles match
             return userRole == allowedRoles;
           })
         ) {
-          //add link to userLinks on true
-          userLinks.push({ text: privateLink.text, href: privateLink.href });
+          //add current private link to userLinks if true
+          userNavLinks.push({ text: privateLink.text, href: privateLink.href });
         }
       });
     });
+
+    //check if current URL is in list of valid links that user can visit
+    // if (
+    //   userNavLinks.some((link) => {
+    //     return link.href == ctx?.req?.url;
+    //   })
+    // ) {
+      //if one link in the list has the same url as current url, we allow access by returning private props
+      return {
+        private: true,
+        title: "",
+        navLinks: userNavLinks,
+        userRoles: userRoles,
+        session: session,
+      };
+    // }
   }
 
-  let props: PrivateProps = {
-    private: priv,
+  //condition occurs when visitor is not allowed to view this page
+  return {
+    private: false,
     title: "",
-    navLinks: userLinks,
-    session: session,
+    navLinks: [],
+    userRoles: [],
+    session: null,
   };
-  return props;
 }
 
 export function getDefaultPublicProps(): PublicProps {

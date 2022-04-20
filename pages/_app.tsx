@@ -7,7 +7,7 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   if (pageProps.private) {
-    if (pageProps.navLinks && pageProps.messages) {
+    if (pageProps.navLinks) {
       return (
         <div>
           <Head>
@@ -17,10 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             </title>
           </Head>
           <SessionProvider session={session}>
-            <PrivateLayout
-              navLinks={pageProps.navLinks}
-              messages={pageProps.messages}
-            >
+            <PrivateLayout navLinks={pageProps.navLinks}>
               <Component {...pageProps} />
             </PrivateLayout>
           </SessionProvider>
