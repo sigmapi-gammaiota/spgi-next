@@ -43,7 +43,7 @@ export async function getPrivateProps(
       }
 
       //if link not available to all users
-      userRoles.map((userRole) => {
+      userRoles.forEach((userRole) => {
         //check each user role
         if (
           privateLink.roles.some((allowedRoles) => {
