@@ -15,8 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <div>
-      <div className="w-full h-96 flex flex-col justify-center items-center gap-6 bg-[#3E395F] text-white">
-        <h1 className="text-5xl">Rush Sigma Pi</h1>
+      <div className="w-full h-96 flex flex-col justify-center items-center gap-6 bg-purple-900 text-white">
+        <h1>Rush Sigma Pi</h1>
         <div className="flex gap-4">
           <button className="p-4 bg-green-500 rounded-3xl">Interest Form</button>
           <button className="text-4xl"><FaInstagram /></button>
@@ -25,7 +25,7 @@ export default function Page() {
       </div>
 
       <div className="py-16 px-32">
-        <h2 className="text-3xl">About Rush</h2>
+        <h2>About Rush</h2>
         <p>Hello and welcome to Rush 2021 for Sigma Pi Gamma Iota Chapter! We hope you enjoyed IFC Showcase and house tours and are excited to get to know you better throughout the rest of Rush.</p>
         <br/>
         <p>This page holds all content you need to find upcoming events! Please see the essential links section for access to our rush discord and other information.</p>
@@ -33,9 +33,9 @@ export default function Page() {
         <p>Come on down to lunches (11:30AM) and dinners (5:30PM) Monday through Friday! No commitment, we'd just love to chat with you and get you some free food!</p>
       </div>
 
-      <div className="py-16 px-32 bg-[#EEEEEE] flex flex-wrap gap-6">
+      <div className="py-16 px-32 bg-neutral-200 flex flex-wrap gap-6">
         <div className="grow">
-          <h2 className="text-3xl">Events</h2>
+          <h2>Events</h2>
           <ul className="list-disc pl-6">
             <li>IFC Showcase - Oct. 25</li>
             <li>House Tours - Oct. 26-27</li>
@@ -65,8 +65,8 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="py-16 px-32 bg-[#EEEEEE]">
-        <h2 className="text-3xl">FAQ</h2>
+      <div className="py-16 px-32 bg-neutral-200">
+        <h2>FAQ</h2>
 
         <i>Do I need to have or know anything for the events?</i>
         <p>Not at all! Feel free to come by to any open event and have some fun! We'd love to meet you.</p>
@@ -79,13 +79,12 @@ export default function Page() {
       </div>
 
       <div className="py-16 px-32">
-        <h2 className="text-3xl">Contact Us</h2>
-        <h3>Rush Chairs:</h3>
+        <h2>Contact Us</h2>
+        <p>Rush Chairs:</p>
         <ul className="list-disc pl-6">
           <li>Sam Losh: stlosh@wpi.edu</li>
           <li>Luke Hoy: lahoy@wpi.edu</li>
         </ul>
-        <p>If you need accommodations, please contact Alex Nieto at (720)-878-5810</p>
       </div>
     </div>
   );
