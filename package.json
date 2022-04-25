@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.21",
-    "@types/react": "18.0.5",
+    "@types/react": "18.0.6",
     "autoprefixer": "^10.4.4",
     "dotenv-cli": "^5.1.0",
     "eslint": "8.13.0",
