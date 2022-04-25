@@ -12,11 +12,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <div>
-      <div className="w-full h-28 flex flex-col justify-center items-center gap-6 bg-purple-900 text-white">
+      <div className="w-full h-28 bg-purp0 flex flex-col justify-center items-center gap-6  text-white">
         <h1>Our History</h1>
       </div>
 
-      <div className="py-16 px-32">
+      <div className="py-16 px-32 bg-base0">
         <h2>Founding</h2>
         <p>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</p>
         <br/>
@@ -27,7 +27,7 @@ export default function Page() {
         <p>Before becoming home to Gamma Iota chapter, our historic chapter house had purportedly served as the WPI President's house and the campus police station. We believe the house to be over 110 years old -- needless to say, it has been renovated over the years! Our house is located at 34 Institute Rd. or 17 Dean St.</p>
       </div>
 
-      <div className="py-16 px-32 bg-neutral-200 flex flex-wrap gap-6">
+      <div className="py-16 px-32 bg-base1 flex flex-wrap gap-6">
         <div className="grow">
           <h2>Rebuilding Our Chapter</h2>
           <p>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</p>
@@ -40,19 +40,19 @@ export default function Page() {
       </div>
 
 
-      <div className="py-16 px-32">
+      <div className="py-16 px-32 bg-base0">
         <h2>Growth and Success</h2>
         <p>From 2004 to 2017, the Gamma Iota chapter grew and rebuilt its standing on campus. In the Spring of 2014, the chapter won, alongside several other honors, Worcester Polytechnic Institute's Chapter of the Year award. In Fall of 2015, the chapter held its 50th Anniversary celebration at the DCU Center in Worcester, welcoming back hundreds of alumni from throughout Gamma Iota's history. In the Fall of 2016, the chapter held its first annual Amazing Day with Sigma Pi, an event that brings fun activities to WPI's quad while raising awareness for mental health and suicide prevention. Finally, in the Spring of 2017, the chapter initiated thirty-three members of the Omicron class, the largest class since its inception.</p>
       </div>
 
-      <div className="py-16 px-32 bg-neutral-200 flex flex-wrap gap-6">
+      <div className="py-16 px-32 bg-base1 flex flex-wrap gap-6">
         <div className="grow">
           <h2>Present Day</h2>
           <p>The Gamma Iota chapter of Sigma Pi continues to maintain an actively positive existence at Worcester Polytechnic Institute. True to our motto, which is based in the idea of perpetual progress, we strive to continuously improve our chapter while still holding true to our values and traditions.</p>
         </div>
       </div>
 
-      <div className="py-16 px-32">
+      <div className="py-16 px-32 bg-base0">
         <h2>International History</h2>
         <p>To learn about the rich history of our international organization, visit our Fraternity's official webpage.</p>
       </div>
