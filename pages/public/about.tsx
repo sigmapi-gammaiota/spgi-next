@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     // why does the shadow break the bottom rounding
-    <div className="rounded-3xl shadow-2xl">
+    <div className="rounded-3xl shadow-xl mx-12 mb-32">
       <div className="w-full h-28 bg-purp0 rounded-t-3xl flex flex-col justify-center items-center gap-6  text-white">
         <h1>Our History</h1>
       </div>
