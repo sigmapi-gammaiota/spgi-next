@@ -3,8 +3,6 @@ import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import SlackProvider from "next-auth/providers/slack";
 import EmailProvider from "next-auth/providers/email";
-import { redirect } from "next/dist/server/api-utils";
-
 const prisma = new PrismaClient();
 export default NextAuth({
   providers: [
@@ -33,6 +31,10 @@ export default NextAuth({
         //magic email login, check admin list first
         if (process.env.ADMIN_EMAILS?.includes(user.email)) {
           //todo: validate this is a secure paradigm
+          await prisma.user.update({
+            where: { email: user.email },
+            data: { roles: { set: "ADMIN" } },
+          });
           return true; //admin email login
         }
         //not admin, check user object from prisma adapter

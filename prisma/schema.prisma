@@ -52,7 +52,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   isValid       Boolean? //used for prototype checking in next-auth
-  isAdmin       Boolean @default(false)
+  isActive      Boolean @default(true) //use instead of deleting users
   roles         String[] //see lib/RoleRouter.Roles for Role type
 }
 

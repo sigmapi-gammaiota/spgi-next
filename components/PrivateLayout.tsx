@@ -3,19 +3,13 @@ import Link from "next/link";
 import { Key } from "react";
 import { Url } from "url";
 import { PrivateLink } from "../lib/RoleRouter";
-import { MessageProps, Message } from "./Message";
 
 interface PrivateLayoutProps {
   children: any;
   navLinks: { text: String; href: String }[];
-  messages: [MessageProps];
 }
 
-const PrivateLayout = ({
-  children,
-  navLinks,
-  messages,
-}: PrivateLayoutProps) => {
+const PrivateLayout = ({ children, navLinks }: PrivateLayoutProps) => {
   return (
     <>
       <header>
@@ -37,12 +31,6 @@ const PrivateLayout = ({
           </button>
         </nav>
       </header>
-      <div>
-        {messages &&
-          messages.map((m) => {
-            return Message(m.text, m.level);
-          })}
-      </div>
       <main>{children}</main>
     </>
   );
