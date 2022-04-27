@@ -14,16 +14,24 @@ const PublicLayout = ({ children }: { children: any }) => {
 
   return (
     <div className="grid">
-      <nav className="flex bg-slate-200 justify-center pt-10 pb-5">
-      <img src="https://sigmapigammaiota.org/static/img/logo.svg" width="150" height="50" className="mr-10 ml-10"/> 
+      <nav className="flex bg-base0 justify-center pt-10 pb-5">
+        <img
+          src="https://sigmapigammaiota.org/static/img/logo.svg"
+          width="150"
+          height="50"
+          className="mr-10 ml-10"
+        />
         {publicNavLinks.map((nl) => {
           return (
-            <div key={nl.href} className="mx-1 text-purple-900 link-underline link-underline-black ml-5 mr-5">
+            <div
+              key={nl.href}
+              className="mx-2 transition ease-in-out text-purp0 hover:-translate-y-1 hover:scale-110 hover:text-purp1 duration-200"
+            >
               <Link href={nl.href}>{nl.text}</Link>
             </div>
           );
         })}
-        <div className="mx-1 text-purple-900 link-underline link-underline-black ml-5 mr-5">
+        <div className="mx-2 transition ease-in-out text-purp0 hover:-translate-y-1 hover:scale-110 hover:text-purp1 duration-200">
           {status == "authenticated" && <Link href="private">Private</Link>}
           {status == "unauthenticated" && (
             <button
@@ -38,9 +46,13 @@ const PublicLayout = ({ children }: { children: any }) => {
         </div>
       </nav>
       <main className="container mx-1">{children}</main>
-      <footer className="fixed bg-base0 text-center bottom-0 min-w-full mx-1 bg-slate-200">Our Values<br/>
-Scholarship | Chivalry | Culture | Character | Service<br/>
-<em>Copyright 2019 Gamma Iota Chapter of Sigma Pi Fraternity</em></footer>
+      <footer className="fixed bg-base0 text-center bottom-0 min-w-full mx-1">
+        Our Values
+        <br />
+        Scholarship | Chivalry | Culture | Character | Service
+        <br />
+        <em>Copyright 2019 Gamma Iota Chapter of Sigma Pi Fraternity</em>
+      </footer>
     </div>
   );
 };
