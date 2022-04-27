@@ -11,8 +11,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <div>
-      <div className="w-full h-28 bg-purp0 flex flex-col justify-center items-center gap-6  text-white">
+    // why does the shadow break the bottom rounding
+    <div className="rounded-3xl shadow-2xl">
+      <div className="w-full h-28 bg-purp0 rounded-t-3xl flex flex-col justify-center items-center gap-6  text-white">
         <h1>Our History</h1>
       </div>
 
@@ -52,7 +53,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="py-16 px-32 bg-base0">
+      <div className="py-16 px-32 bg-base0  rounded-b-3xl">
         <h2>International History</h2>
         <p>To learn about the rich history of our international organization, visit our Fraternity's official webpage.</p>
       </div>
