@@ -50,7 +50,6 @@ To resume services, use `docker-compose start`
 
 If you wish to reset the volumes, run `docker-compose down -v && docker-compose up`
 
-
 ##### Basic overview
 
 install prerequisites (wsl, nodejs 12+, npm, docker, docker-compose)
@@ -59,6 +58,7 @@ docker-compose up (runs docker services, only postgres for now)
 email setup with ethereal.email
 
 ##### Extra
+
 WHEN RUNNING PRODUCTION, change .env.example to .env.prod
 
 when running prisma with required .env, provide via
