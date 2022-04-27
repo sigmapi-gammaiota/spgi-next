@@ -12,11 +12,13 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <div>
-      <div className="w-full h-28 flex flex-col justify-center items-center gap-6 bg-purple-900 text-white">
+      <div className="w-full h-28 flex flex-col justify-center items-center gap-6 text-white bg-purp0 text-white">
         <h1>Philanthropy</h1>
       </div>
+<div className="px-16">
 
       <div className="max-w-6xl mx-auto grid grid-cols-1">
+        <div className="py-16 px-32 bg-base0"> 
         <h2 className="mt-5">Overview</h2>
 
         <p>Our chapter's activities fall into five main categories:
@@ -29,7 +31,8 @@ export default function Page() {
         <li>Rush (recruitment)</li>
         </ul>
         </p>
-
+        </div>
+<div className=" py-16 px-32 bg-base1">
         <h2 className="mt-5">Philanthropy & Community Service</h2>
 
         <p>Our brotherhood considers community service with high importance, and we strive to give back to the Worcester and WPI community. 
@@ -41,7 +44,8 @@ export default function Page() {
         <p>
         <span className="italic">To learn about the service and philanthropy efforts of our international organization, visit our Fraternity's <a className="text-blue-500 underline "href="//sigmapi.org">official webpage</a>.</span></p>
 
-
+</div>
+<div className=" py-16 px-32 bg-base2">
         <h2 className="mt-5">Freshman Move-In</h2>
 
         <p>At the beginning of each academic year, our chapter joins with other Greek chapters on campus, and helps incoming freshmen move into their dormitories. We welcome each student with cheers and help carry their belongings to their rooms. This effort not only allows incoming freshmen to move in smoothly and rapidly, but also serves as a welcoming gesture toward the new class from the fraternities and sororities on campus.</p>
@@ -65,6 +69,8 @@ export default function Page() {
 
         <div className="m-0 p-50"></div>
         </div>
+        </div>
+    </div>
     </div>
   );
 }
