@@ -45,7 +45,7 @@ const PublicLayout = ({ children }: { children: any }) => {
           )}
         </div>
       </nav>
-      <main className="container mx-1">{children}</main>
+      <main className="container mx-auto">{children}</main>
       <footer className="fixed bg-base0 text-center bottom-0 min-w-full mx-1">
         Our Values
         <br />
