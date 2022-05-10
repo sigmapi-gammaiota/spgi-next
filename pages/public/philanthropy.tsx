@@ -66,7 +66,11 @@ export default function Page() {
 
 
         <h2 className="mt-5 text-2xl">Relay for Life</h2>
-
+<Image src="/relay-for-life-2022.jpg"
+width="600"
+height="400"
+objectFit="contain"
+/>
         <p>Each spring our chapter participates in the WPI Relay for Life put on by the American Cancer Society. Leading up to the event our brotherhood raises money for cancer research through fundraising and personal contributions. During the event our brothers walk in support of those who have battled cancer.</p>
 
         <h2 className="mt-5 text-2xl">ACE Project</h2>
