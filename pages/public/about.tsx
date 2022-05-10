@@ -1,4 +1,6 @@
 import { GetStaticProps } from "next";
+import Image from 'next/image'
+import Calendar from "react-calendar";
 import { getDefaultPublicProps } from "../../lib/NextProps";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -27,16 +29,24 @@ export default function Page() {
         <p>Before becoming home to Gamma Iota chapter, our historic chapter house had purportedly served as the WPI President's house and the campus police station. We believe the house to be over 110 years old -- needless to say, it has been renovated over the years! Our house is located at 34 Institute Rd. or 17 Dean St.</p>
       </div>
 
-      <div className="py-16 px-8 md:px-32 bg-base1 flex flex-wrap gap-6">
-        <div className="grow">
-          <h2>Rebuilding Our Chapter</h2>
-          <p>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</p>
-          <br/>
-          <p>In the summer of 2004, a fire on the third floor of the house drew the attention of our international organization to the chapter. Luckily, nobody suffered serious injuries and the structure incurred only moderate damage overall.</p>
-          <br/>
-          <p>This was a grave time for the chapter, and its future fell into uncertainty. After closer investigation, Sigma Pi officials intervened and introduced a "Renaissance program" that revitalized our membership and restarted the chapter on a clean slate, with a new Alpha class in the Fall of 2004. If not for the vision and cooperation of this intrepid class of 20 dedicated men, Gamma Iota may not still be here today.</p>
-
-        </div>
+      <div className="py-16 px-32 bg-neutral-200 flex gap-6">
+      {/* <div className="py-16 px-8 md:px-32 bg-base1 flex flex-wrap gap-6"> */}
+          <div className="grow w-1/2">
+            <h2>Rebuilding Our Chapter</h2>
+            <p>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</p>
+            <br/>
+            <p>In the summer of 2004, a fire on the third floor of the house drew the attention of our international organization to the chapter. Luckily, nobody suffered serious injuries and the structure incurred only moderate damage overall.</p>
+            <br/>
+            <p>This was a grave time for the chapter, and its future fell into uncertainty. After closer investigation, Sigma Pi officials intervened and introduced a "Renaissance program" that revitalized our membership and restarted the chapter on a clean slate, with a new Alpha class in the Fall of 2004. If not for the vision and cooperation of this intrepid class of 20 dedicated men, Gamma Iota may not still be here today.</p>
+          </div>
+        <Image
+          src="/old-composite.jpg"
+          // layout="fill"
+          objectFit="contain"
+          width="523"
+          height="411"
+          // layout="fill"
+        />
       </div>
 
 
