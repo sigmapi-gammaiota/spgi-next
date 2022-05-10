@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getSession, signIn, useSession } from "next-auth/react";
 
 const publicNavLinks = [
@@ -13,25 +14,25 @@ const PublicLayout = ({ children }: { children: any }) => {
   const { status } = useSession();
 
   return (
-    <div className="grid">
-      <nav className="flex-nowrap md:flex bg-base0 justify-center pt-10 pb-5">
-        <img
-          src="https://sigmapigammaiota.org/static/img/logo.svg"
-          width="150"
-          height="50"
-          className="mr-4 md:mr-10 ml-4 md:ml-10"
+    <div className="container mx-auto md:px-20 space-y-2 bg-base0">
+      <nav className="flex flex-row bg-base0">
+        <Image
+          src="/logo.svg"
+          alt="logo"
+          width={250}
+          height={75}
+          layout="intrinsic"
+          objectFit="contain"
         />
+        <div className="flex-grow"></div>
         {publicNavLinks.map((nl) => {
           return (
-            <div
-              key={nl.href}
-              className="mx-1 md:ml-2 transition ease-in-out text-purp0 hover:-translate-y-1 hover:scale-110 hover:text-purp1 duration-200"
-            >
+            <div key={nl.href} className="mx-2 my-auto text-purp0">
               <Link href={nl.href}>{nl.text}</Link>
             </div>
           );
         })}
-        <div className="mx-1 md:ml-2 transition ease-in-out text-purp0 hover:-translate-y-1 hover:scale-110 hover:text-purp1 duration-200">
+        <div className="mx-2 my-auto text-purp0">
           {status == "authenticated" && <Link href="private">Private</Link>}
           {status == "unauthenticated" && (
             <button
@@ -45,8 +46,8 @@ const PublicLayout = ({ children }: { children: any }) => {
           )}
         </div>
       </nav>
-      <main className="container mx-auto">{children}</main>
-      <footer className="fixed bg-base0 text-center bottom-0 min-w-full mx-1">
+      <main className="mx-auto">{children}</main>
+      <footer className="bg-base0 text-center min-w-full">
         Our Values
         <br />
         Scholarship | Chivalry | Culture | Character | Service

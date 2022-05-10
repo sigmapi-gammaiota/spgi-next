@@ -13,12 +13,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <div className="w-full md:w-auto md:rounded-3xl shadow-xl md:mx-12 mb-32">
-      <div className="w-full h-28 bg-purp0 md:rounded-t-3xl flex flex-col justify-center items-center gap-6  text-white">
-        <h1>Our History</h1>
-      </div>
+    <div className="grid shadow-md rounded-lg">
+      <h1 className="col-span-full text-center py-4 bg-purp0 text-5xl text-base0 rounded-t-lg">Our History</h1>
 
-      <div className="py-16 px-8 md:px-32 bg-base0">
+      <div className="col-span-full p-8 bg-base0">
         <h2>Founding</h2>
         <p>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</p>
         <br/>
@@ -41,11 +39,9 @@ export default function Page() {
           </div>
         <Image
           src="/old-composite.jpg"
-          // layout="fill"
           objectFit="contain"
           width="523"
           height="411"
-          // layout="fill"
         />
       </div>
 
@@ -62,7 +58,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="py-16 px-8 md:px-32 bg-base0  md:rounded-b-3xl">
+      <div className="py-16 px-8 md:px-32 bg-base0 ">
         <h2>International History</h2>
         <p>To learn about the rich history of our international organization, visit our Fraternity's official webpage.</p>
       </div>
