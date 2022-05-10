@@ -14,7 +14,7 @@ const PublicLayout = ({ children }: { children: any }) => {
   const { status } = useSession();
 
   return (
-    <div className="container mx-auto md:px-20 space-y-2 bg-base0">
+    <div className="mx-auto md:px-32 space-y-2 bg-base0">
       <nav className="flex flex-row bg-base0">
         <Image
           src="/logo.svg"

@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next";
 import Image from 'next/image'
-import Calendar from "react-calendar";
 import { getDefaultPublicProps } from "../../lib/NextProps";
 
 export const getStaticProps: GetStaticProps = async () => {
