@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
 <div className=" bg-base1 flex flex-wrap ">
-      <div className="w-full h-28 flex flex-col justify-center items-center text-white bg-purp0 text-white">
+      <div className="w-full h-28 flex flex-col justify-center items-center text-white bg-purp0 text-base0">
         <h1 className="text-3xl">Philanthropy</h1>
       </div>
 <div className="">
