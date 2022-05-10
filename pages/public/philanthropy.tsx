@@ -45,7 +45,7 @@ export default function Page() {
         <span className="italic">To learn about the service and philanthropy efforts of our international organization, visit our Fraternity's <a className="text-blue-500 underline "href="//sigmapi.org">official webpage</a>.</span></p>
 
 </div>
-<div className="py-16 px-8 md:px-32 bg-base0 md:rounded-b-3xl content-center">
+<div className="py-16 px-8 md:px-32 bg-base0 content-center">
         <Image className="fill-purple-100"
           src="/The_Trevor_Project_Logo_(2022).svg"
           alt="TrevorProjectLogo"
