@@ -39,6 +39,7 @@ export default function Page() {
           Throughout the 2016/2017 academic year our brothers contributed over 1000 hours across 47 unique service events. Whether as mentors for FIRST Robotics teams or farmhands for local farmers,
           our chapter has made lasting contributions to the area.</p>
         <div className="m-1 p-0"></div>
+        <Image src="/sigsomnia-2022.jpg" width="800" height="300" objectFit="contain"/>
         <p>The sections below outline the major recurring service events that our chapter participates in; however, they do not capture the entire picture of how Sigma Pi gives back to the community.</p>
         <div className="m-1 p-0"></div>
         <p>
@@ -66,7 +67,11 @@ export default function Page() {
 
 
         <h2 className="mt-5 text-2xl">Relay for Life</h2>
-
+<Image src="/relay-for-life-2022.jpg"
+width="600"
+height="400"
+objectFit="contain"
+/>
         <p>Each spring our chapter participates in the WPI Relay for Life put on by the American Cancer Society. Leading up to the event our brotherhood raises money for cancer research through fundraising and personal contributions. During the event our brothers walk in support of those who have battled cancer.</p>
 
         <h2 className="mt-5 text-2xl">ACE Project</h2>
