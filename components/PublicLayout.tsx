@@ -6,7 +6,7 @@ const publicNavLinks = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
   { href: "/philanthropy", text: "Philanthropy" },
-  { href: "/donate", text: "Donate" },
+  { href: "https://www.paypal.com/paypalme/sigmapigammaiota?locale.x=en_US", text: "Donate" },
   { href: "/rush", text: "Rush" },
 ];
 
