@@ -45,6 +45,20 @@ export default function Page() {
         <span className="italic">To learn about the service and philanthropy efforts of our international organization, visit our Fraternity's <a className="text-blue-500 underline "href="//sigmapi.org">official webpage</a>.</span></p>
 
 </div>
+<div className="py-16 px-8 md:px-32 bg-base0 md:rounded-b-3xl content-center">
+        <Image className="fill-purple-100"
+          src="/The_Trevor_Project_Logo_(2022).svg"
+          alt="TrevorProjectLogo"
+          width={630}
+          height={250}
+          layout="intrinsic"
+          objectFit="contain"
+        />
+        <button className="font-bold py-2 px-4 border rounded align-center relative">
+            Donate
+        </button>
+        <p className="mt-5 text-justify">We have proudly selected The Trevor Project to be our philanthropic partner. We made this decision based on a couple of factors. First and foremost, we fully support the mission of the organizaiton, which is to provide mental health and suicide prevention awareness resources to all, namely LGBTQ+ youth. We also took close note of the organization’s Charity Navigator Score, which is generated from financial transparency and accountability as compared to other charities. The Trevor Project received a 99.41/100 overall score, as well as it’s 82.1 program expense ratio, top in class, which is determined by program expenses divided by total expenses This cause hits close to home for Sigma Pi, as we endure the ongoing mourning of brother Jyn Godin. Jyn’s positive spirit lives on in our organization, and we proudly support relevant philanthropic efforts.</p>
+      </div>
 <div className=" py-16 px-32 bg-base2">
         <h2 className="mt-5 text-2xl">Freshman Move-In</h2>
 
