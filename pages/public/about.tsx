@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <div className="grid shadow-md rounded-lg">
-      <h1 className="col-span-full text-center py-4 bg-purp0 text-5xl text-base0 rounded-t-lg">Our History</h1>
+      <h1 className="col-span-full text-center leading-16 font-semibold py-4 bg-purp0 text-5xl text-base0 rounded-t-lg">Our History</h1>
 
       <div className="py-16 px-8 md:px-16 col-span-full p-8 bg-base0">
         <h2 className="text-3xl">Founding</h2>

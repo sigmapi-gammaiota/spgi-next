@@ -27,16 +27,16 @@ const PublicLayout = ({ children }: { children: any }) => {
         <div className="flex-grow"></div>
         {publicNavLinks.map((nl) => {
           return (
-            <div key={nl.href} className="mx-2 my-auto text-purp0">
+            <div key={nl.href} className="mx-4 my-auto text-3xl text-purp0 font-semibold">
               <Link href={nl.href}>{nl.text}</Link>
             </div>
           );
         })}
-        <div className="mx-2 my-auto text-purp0">
+        <div className="mx-4 my-auto text-3xl text-purp0">
           {status == "authenticated" && <Link href="private">Private</Link>}
           {status == "unauthenticated" && (
             <button
-              className=""
+              className="font-semibold"
               onClick={() => {
                 signIn(undefined, { callbackUrl: "/private" });
               }}

@@ -8,7 +8,7 @@ module.exports = {
       "base0":"#FAFAFA",
       "base1":"#F4F4F5",
       "base2":"#E4E4E7",
-      "purp0":"#A855F7",
+      "purp0":"#403A60",
       "purp1":"#C084FC",
       "gold0":"#EAB308",
       "gold1":"#CA8A04",
