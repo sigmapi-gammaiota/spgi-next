@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
 <div className="py-16 px-8 md:px-32 bg-base1 flex flex-wrap gap-6">
-      <div className="w-full h-28 flex flex-col justify-center items-center gap-6 text-white bg-purp0 text-white">
+      <div className="w-full h-28 flex flex-col justify-center items-center text-white bg-purp0 text-white">
         <h1 className="text-3xl">Philanthropy</h1>
       </div>
 <div className="">
@@ -75,7 +75,7 @@ export default function Page() {
 
         <h2 className="mt-5 text-2xl">Amazing Day</h2>
 <Image
-src="/Amazing-day-2022.jpg"
+src="/amazing-day-2022.jpg"
 height="3024"
 width="4032"
 objectFit="contain"
