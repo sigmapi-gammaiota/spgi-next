@@ -19,6 +19,10 @@ const nextConfig = {
         source: "/rush",
         destination: "/public/rush",
       },
+      {
+        source: "/donate",
+        destination: "/public/donate",
+      },
     ];
   },
 };
