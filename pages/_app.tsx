@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   if (pageProps.private) {
     if (pageProps.navLinks && pageProps.messages) {
       return (
-        <div>
+        <div className="m-0 bg-base0">
           <Head>
             <title>
               Sigma Pi Gamma Iota
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     }
   } else {
     return (
-      <div>
+      <div className="m-0 bg-base0">
         <Head>
           <title>
             Sigma Pi Gamma Iota

@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getSession, signIn, useSession } from "next-auth/react";
 
 const publicNavLinks = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
   { href: "/philanthropy", text: "Philanthropy" },
-  { href: "/donate", text: "Donate" },
+  { href: "https://www.paypal.com/paypalme/sigmapigammaiota?locale.x=en_US", text: "Donate" },
   { href: "/rush", text: "Rush" },
 ];
 
@@ -13,20 +14,29 @@ const PublicLayout = ({ children }: { children: any }) => {
   const { status } = useSession();
 
   return (
-    <div className="grid">
-      <nav className="flex">
+    <div className="mx-auto md:px-32 space-y-2 bg-base0">
+      <nav className="flex flex-row bg-base0">
+        <Image
+          src="/logo.svg"
+          alt="logo"
+          width={250}
+          height={75}
+          layout="intrinsic"
+          objectFit="contain"
+        />
+        <div className="flex-grow"></div>
         {publicNavLinks.map((nl) => {
           return (
-            <div key={nl.href} className="mx-1 hover:underline">
+            <div key={nl.href} className="mx-4 my-auto text-3xl text-purp0 font-semibold">
               <Link href={nl.href}>{nl.text}</Link>
             </div>
           );
         })}
-        <div className="mx-1 hover:underline">
+        <div className="mx-4 my-auto text-3xl text-purp0">
           {status == "authenticated" && <Link href="private">Private</Link>}
           {status == "unauthenticated" && (
             <button
-              className="hover:underline"
+              className="font-semibold"
               onClick={() => {
                 signIn(undefined, { callbackUrl: "/private" });
               }}
@@ -36,8 +46,14 @@ const PublicLayout = ({ children }: { children: any }) => {
           )}
         </div>
       </nav>
-      <main className="container mx-1">{children}</main>
-      <footer className="fixed bottom-0 mx-1">Footer</footer>
+      <main className="mx-auto">{children}</main>
+      <footer className="bg-base0 text-center min-w-full">
+        Our Values
+        <br />
+        Scholarship | Chivalry | Culture | Character | Service
+        <br />
+        <em>Copyright 2019 Gamma Iota Chapter of Sigma Pi Fraternity</em>
+      </footer>
     </div>
   );
 };
