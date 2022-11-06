@@ -1,49 +1,75 @@
-import "../styles/globals.css";
-import PublicLayout from "../components/PublicLayout";
-import type { AppProps } from "next/app";
-import PrivateLayout from "../components/PrivateLayout";
+import Shell from "@components/Shell";
+import { MantineProvider } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
+import { AppProps } from "next/app";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  if (pageProps.private) {
-    if (pageProps.navLinks && pageProps.messages) {
-      return (
-        <div>
-          <Head>
-            <title>
-              Sigma Pi Gamma Iota
-              {pageProps.title && " - ".concat(pageProps.title)}
-            </title>
-          </Head>
-          <SessionProvider session={session}>
-            <PrivateLayout
-              navLinks={pageProps.navLinks}
-              messages={pageProps.messages}
-            >
-              <Component {...pageProps} />
-            </PrivateLayout>
-          </SessionProvider>
-        </div>
-      );
-    }
-  } else {
-    return (
-      <div>
-        <Head>
-          <title>
-            Sigma Pi Gamma Iota
-            {pageProps.title && " - ".concat(pageProps.title)}
-          </title>
-        </Head>
-        <SessionProvider session={session}>
-          <PublicLayout>
-            <Component {...pageProps} />
-          </PublicLayout>
-        </SessionProvider>
-      </div>
-    );
-  }
-}
+export default function App(props: AppProps) {
+  const { pageProps: { session } } = props;
 
-export default MyApp;
+  return (
+    <>
+      <Head>
+        <title>Sigma Pi Gamma Iota</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
+
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          colors: {
+            brand: [
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+              "#3F3A5F",
+            ]
+          },
+          primaryColor: "brand",
+          fontFamily: "Lato, sans-serif",
+          headings: {
+            fontFamily: "Lato, sans-serif",
+            fontWeight: 100,
+            lineHeight: 2,
+            sizes: {
+              h1: { fontSize: 24 },
+              h2: { fontSize: 20 },
+              h3: { fontSize: 18 },
+              h4: { fontSize: 16 },
+              h5: { fontSize: 14 },
+              h6: { fontSize: 12 },
+            },
+          },
+          components: {
+            Title: {
+              styles: {
+                root: {
+                  color: "#3F3A5F"
+                },
+              },
+            },
+            Text: {
+              styles: {
+                root: {
+                  paddingTop: 6,
+                  paddingBottom: 6
+                }
+              }
+            }
+          }
+        }}
+      >
+        <SessionProvider session={session}>
+          <Shell {...props} />
+        </SessionProvider>
+      </MantineProvider>
+    </>
+  );
+}

@@ -1,9 +1,8 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
-import SlackProvider from "next-auth/providers/slack";
 import EmailProvider from "next-auth/providers/email";
-import { redirect } from "next/dist/server/api-utils";
+import SlackProvider from "next-auth/providers/slack";
 
 const prisma = new PrismaClient();
 export default NextAuth({

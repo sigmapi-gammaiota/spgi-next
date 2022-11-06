@@ -1,9 +1,10 @@
-import { GetStaticProps } from "next";
 import { getDefaultPublicProps } from "@lib/NextProps";
 import { Text, Title } from "@mantine/core";
+import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
   let p = getDefaultPublicProps();
+  p.title = "Brothers";
   return {
     props: p,
   };
@@ -12,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Page() {
   return (
     <>
-      <Title order={1}>Home</Title>
+      <Title order={1}>Heading</Title>
       <Text>Paragraph</Text>
     </>
   );
