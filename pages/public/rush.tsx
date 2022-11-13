@@ -1,3 +1,4 @@
+import Section from "@components/Section";
 import { getDefaultPublicProps } from "@lib/NextProps";
 import { Anchor, List, Text, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
@@ -12,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <>
+    <Section>
       <Title order={1}>About Rush</Title>
       <Text>Hello and welcome to Rush 2022 for Sigma Pi Gamma Iota Chapter! We hope you enjoyed IFC Showcase and house tours and are excited to get to know you better throughout the rest of Rush.</Text>
       <Text>This page holds all content you need to find upcoming events! Please see the essential links section for access to our rush discord and other information.</Text>
@@ -63,6 +64,6 @@ export default function Page() {
       <Text>Sigma Pi is a fraternity of like-minded individuals at Worcester Polytechnic Institute. There is no category or classification for our fraternity, our interests and backgrounds span far and wide.</Text>
 
       <Title order={1}>Interest Form</Title>
-    </>
+    </Section>
   );
 }

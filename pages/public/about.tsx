@@ -1,3 +1,4 @@
+import Section from "@components/Section";
 import { getDefaultPublicProps } from "@lib/NextProps";
 import { Anchor, Text, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
@@ -12,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <>
+    <Section>
       <Title order={1}>Founding</Title>
       <Text>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</Text>
       <Text>As a local fraternity, "PTN" had no overarching organization to support it. After vetting fraternities across the country for one year, PTN decided to apply to become a chartered and recognized chapter of Sigma Pi Fraternity. After another year, on May 1st, 1965, Psi Theta Nu received its charter from Sigma Pi Fraternity.</Text>
@@ -31,6 +32,6 @@ export default function Page() {
 
       <Title order={1}>International History</Title>
       <Text>To learn about the rich history of our international organization, visit our Fraternity's <Anchor href="http://www.sigmapi.org/" target="_blank">official webpage</Anchor>.</Text>
-    </>
+    </Section>
   );
 }

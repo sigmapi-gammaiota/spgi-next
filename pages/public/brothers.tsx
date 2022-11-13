@@ -1,3 +1,4 @@
+import Section from "@components/Section";
 import { getDefaultPublicProps } from "@lib/NextProps";
 import { Text, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
@@ -12,9 +13,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <>
+    <Section>
       <Title order={1}>Heading</Title>
       <Text>Paragraph</Text>
-    </>
+    </Section>
   );
 }

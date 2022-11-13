@@ -1,3 +1,4 @@
+import Section from "@components/Section";
 import { getDefaultPublicProps } from "@lib/NextProps";
 import { Anchor, List, Text, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
@@ -12,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <>
+    <Section>
       <Title order={1}>Overview</Title>
       <Text>Our chapter's activities fall into five main categories:</Text>
       <List>
@@ -40,6 +41,6 @@ export default function Page() {
       <Title order={1}>Amazing Day</Title>
       <Text>The Amazing Day Foundation exists in support of suicide awareness and prevention. This topic is of extreme importance particularly on college campuses, where an estimated 1 in 12 students have strongly considered suicide.</Text>
       <Text>At WPI, our brotherhood is making efforts to support the Amazing Day Foundation and raise awareness. As our 2017 ACE project, our brothers educated members of the WPI community about the prevalence of suicide on college campuses and the resources that WPI offers through an event on the WPI Quad. In addition to this, we provided food and activities on the quad that allowed students to relax outdoors after completing their midterms.</Text>
-    </>
+    </Section>
   );
 }
