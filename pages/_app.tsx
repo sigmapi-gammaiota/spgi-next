@@ -19,7 +19,7 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           colors: {
-            brand: [
+            purple: [
               "#3F3A5F",
               "#3F3A5F",
               "#3F3A5F",
@@ -30,9 +30,21 @@ export default function App(props: AppProps) {
               "#3F3A5F",
               "#3F3A5F",
               "#3F3A5F",
+            ],
+            gold: [
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
+              "#D2B48C",
             ]
           },
-          primaryColor: "brand",
+          primaryColor: "purple",
           fontFamily: "Lato, sans-serif",
           headings: {
             fontFamily: "Lato, sans-serif",
