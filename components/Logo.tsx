@@ -10,7 +10,7 @@ export default function Logo({href="/"}: LogoProps) {
     <UnstyledButton>
       <Link href={href}>
         <Image
-          src="logo.svg"
+          src="img/logo.svg"
           width={250}
         />
       </Link>
