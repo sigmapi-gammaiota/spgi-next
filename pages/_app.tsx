@@ -1,8 +1,16 @@
 import Shell from "@components/Shell";
-import { MantineProvider } from "@mantine/core";
+import { DefaultMantineColor, MantineProvider, Tuple } from "@mantine/core";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
+
+type ExtendedCustomColors = "purple" | "gold" | DefaultMantineColor;
+
+declare module "@mantine/core" {
+  export interface MantineThemeColorsOverride {
+    colors: Record<ExtendedCustomColors, Tuple<string, 10>>;
+  }
+}
 
 export default function App(props: AppProps) {
   const { pageProps: { session } } = props;

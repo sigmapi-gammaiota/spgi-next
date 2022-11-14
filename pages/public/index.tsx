@@ -12,9 +12,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Page() {
   return (
-    <Section>
-      <Title order={1}>Home</Title>
-      <Text>Paragraph</Text>
-    </Section>
+    <>
+      <Section>
+        <Title order={1}>Home</Title>
+        <Text>Paragraph</Text>
+      </Section>
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import { Box, Container, Title } from "@mantine/core";
+import Section from "@components/Section";
+import { Title } from "@mantine/core";
 import useStyles from "@styles/styles";
 import { AppProps } from "next/app";
-import Section from "@components/Section";
 
 export default function PublicLayout({ Component, pageProps }: AppProps) {
   const { classes } = useStyles();
@@ -10,11 +10,9 @@ export default function PublicLayout({ Component, pageProps }: AppProps) {
     <>
       {
         pageProps.title && 
-        <Box sx={({ backgroundColor: "#3f3a5f" })}>
-          <Section>
-              <Title className={classes.title}>{pageProps.title}</Title>
-          </Section>
-        </Box>
+        <Section bg="purple">
+          <Title className={classes.title}>{pageProps.title}</Title>
+        </Section>
       }
       <Component {...pageProps} />
     </>
