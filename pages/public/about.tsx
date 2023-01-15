@@ -1,6 +1,6 @@
 import Section from "@components/Section";
 import { getDefaultPublicProps } from "@lib/NextProps";
-import { Anchor, Text, Title } from "@mantine/core";
+import { Anchor, Box, Flex, Grid, Group, Image, Stack, Text, Title } from "@mantine/core";
 import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -15,10 +15,25 @@ export default function Page() {
   return (
     <Section>
       <Title order={1}>Founding</Title>
-      <Text>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</Text>
-      <Text>As a local fraternity, "PTN" had no overarching organization to support it. After vetting fraternities across the country for one year, PTN decided to apply to become a chartered and recognized chapter of Sigma Pi Fraternity. After another year, on May 1st, 1965, Psi Theta Nu received its charter from Sigma Pi Fraternity.</Text>
-      <Text>Thus began the chapter's identity as Sigma Pi - Gamma Iota. Today, our alumni housing corporation still bears the name of our chapter's heritage: Psi Theta Nu.</Text>
-      <Text>Before becoming home to Gamma Iota chapter, our historic chapter house had purportedly served as the WPI President's house and the campus police station. We believe the house to be over 110 years old -- needless to say, it has been renovated over the years! Our house is located at 34 Institute Rd. or 17 Dean St.</Text>
+      <Grid gutter="xl">
+        <Grid.Col sm={6} xs={12}>
+          <Box>
+            <Text>Gamma Iota chapter began in 1963 as Psi Theta Nu Fraternity, a local fraternity comprised of like-minded individuals at Worcester Polytechnic Institute.</Text>
+            <Text>As a local fraternity, "PTN" had no overarching organization to support it. After vetting fraternities across the country for one year, PTN decided to apply to become a chartered and recognized chapter of Sigma Pi Fraternity. After another year, on May 1st, 1965, Psi Theta Nu received its charter from Sigma Pi Fraternity.</Text>
+            <Text>Thus began the chapter's identity as Sigma Pi - Gamma Iota. Today, our alumni housing corporation still bears the name of our chapter's heritage: Psi Theta Nu.</Text>
+            <Text>Before becoming home to Gamma Iota chapter, our historic chapter house had purportedly served as the WPI President's house and the campus police station. We believe the house to be over 110 years old -- needless to say, it has been renovated over the years! Our house is located at 34 Institute Rd. or 17 Dean St.</Text>
+          </Box>
+        </Grid.Col>
+        <Grid.Col sm={6} xs={12}>
+          <Stack spacing="xs">
+            <Image
+              src="img\history\old-composite.jpg"
+              width="100%"
+            />
+            <Text size="sm" align="center">The chapter's first composite as Sigma Pi</Text>
+          </Stack>
+        </Grid.Col>
+      </Grid>
 
       <Title order={1}>Rebuilding Our Chapter</Title>
       <Text>In the summer of 2004, a fire on the third floor of the house drew the attention of our international organization to the chapter. Luckily, nobody suffered serious injuries and the structure incurred only moderate damage overall.</Text>
