@@ -1,6 +1,5 @@
+import { getPrivateProps } from "@lib/NextProps";
 import Head from "next/head";
-import { getPrivateProps } from "../../lib/NextProps";
-import { MessageLevels } from "../../components/Message";
 import { GetServerSideProps } from "next/types";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

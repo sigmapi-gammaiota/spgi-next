@@ -1,9 +1,8 @@
+import { MessageProps } from "@components/Message";
+import { PrismaClient } from "@prisma/client";
 import { Session } from "next-auth";
 import { getSession, GetSessionParams } from "next-auth/react";
-import { MessageProps } from "../components/Message";
-import { PrismaClient } from "@prisma/client";
-import { PrivateLink, AllPrivateLinks, Roles } from "./RoleRouter";
-import { text } from "stream/consumers";
+import { AllPrivateLinks } from "./RoleRouter";
 
 const prisma = new PrismaClient();
 export interface PrivateProps {

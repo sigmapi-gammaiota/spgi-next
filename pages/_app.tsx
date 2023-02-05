@@ -1,8 +1,8 @@
-import "../styles/globals.css";
-import PublicLayout from "../components/PublicLayout";
-import type { AppProps } from "next/app";
-import PrivateLayout from "../components/PrivateLayout";
+import PrivateLayout from "@components/PrivateLayout";
+import PublicLayout from "@components/PublicLayout";
+import "@styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {

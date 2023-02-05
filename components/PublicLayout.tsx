@@ -1,5 +1,5 @@
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { getSession, signIn, useSession } from "next-auth/react";
 
 const publicNavLinks = [
   { href: "/", text: "Home" },
