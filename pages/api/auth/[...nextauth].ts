@@ -1,9 +1,9 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import NextAuth from "next-auth";
-import SlackProvider from "next-auth/providers/slack";
-import EmailProvider from "next-auth/providers/email";
-import { redirect } from "next/dist/server/api-utils";
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { PrismaClient } from '@prisma/client';
+import NextAuth from 'next-auth';
+import SlackProvider from 'next-auth/providers/slack';
+import EmailProvider from 'next-auth/providers/email';
+import { redirect } from 'next/dist/server/api-utils';
 
 const prisma = new PrismaClient();
 export default NextAuth({
@@ -21,7 +21,7 @@ export default NextAuth({
   ],
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "database",
+    strategy: 'database',
     maxAge: 14 * 24 * 60 * 60, // 14 days
     // Note: This option is ignored if using JSON Web Tokens
     updateAge: 24 * 60 * 60, // 24 hours
@@ -37,7 +37,7 @@ export default NextAuth({
         }
         //not admin, check user object from prisma adapter
 
-        if (user.hasOwnProperty("isValid")) {
+        if (user.hasOwnProperty('isValid')) {
           //we SHOULD be working with a non-prototype user from prisma adapter
           //todo: validate non-prototype
           //this means we continue with login since it was a successful auth from db source

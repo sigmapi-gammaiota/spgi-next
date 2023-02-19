@@ -11,20 +11,20 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  session_state      String?
+  id                String   @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -42,18 +42,20 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  sessions      Session[]
-  isValid       Boolean? //used for prototype checking in next-auth
-  isAdmin       Boolean @default(false)
-  roles         String[] //see lib/RoleRouter.Roles for Role type
+  id                      String       @id @default(cuid())
+  name                    String?
+  email                   String?      @unique
+  emailVerified           DateTime?
+  image                   String?
+  createdAt               DateTime     @default(now())
+  updatedAt               DateTime     @updatedAt
+  accounts                Account[]
+  sessions                Session[]
+  isValid                 Boolean? //used for prototype checking in next-auth
+  isAdmin                 Boolean      @default(false)
+  roles                   String[] //see lib/RoleRouter.Roles for Role type
+  partyGuestsAdded        PartyGuest[] @relation(name: "PartyGuestsAdded")
+  partyGuestsUsingInvites PartyGuest[] @relation(name: "PartyGuestsUsingInvites")
 }
 
 model VerificationToken {
@@ -62,4 +64,36 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Party {
+  id                 String       @id @default(cuid())
+  name               String
+  startsAt           DateTime
+  prepartyStartsAt   DateTime?
+  maxInvites         Int?
+  maxMaleInvites     Int?
+  maxFemaleInvites   Int?
+  maxPrepartyInvites Int?
+  guests             PartyGuest[]
+}
+
+model PartyGuest {
+  name              String   @id
+  addedAt           DateTime @default(now())
+  gender            Gender
+  isPreparty        Boolean  @default(false)
+  wasVouchedFor     Boolean  @default(false)
+  invitedToPartyId  String
+  invitedTo         Party    @relation(fields: [invitedToPartyId], references: [id])
+  addedByUserId     String
+  addedBy           User     @relation(name: "PartyGuestsAdded", fields: [addedByUserId], references: [id])
+  usingInviteUserId String?
+  usingInvite       User?    @relation(name: "PartyGuestsUsingInvites", fields: [usingInviteUserId], references: [id])
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  NON_BINARY
 }

@@ -1,12 +1,12 @@
-import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
+import { signIn, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const publicNavLinks = [
-  { href: "/", text: "Home" },
-  { href: "/about", text: "About" },
-  { href: "/philanthropy", text: "Philanthropy" },
-  { href: "/donate", text: "Donate" },
-  { href: "/rush", text: "Rush" },
+  { href: '/', text: 'Home' },
+  { href: '/about', text: 'About' },
+  { href: '/philanthropy', text: 'Philanthropy' },
+  { href: '/donate', text: 'Donate' },
+  { href: '/rush', text: 'Rush' },
 ];
 
 const PublicLayout = ({ children }: { children: any }) => {
@@ -23,12 +23,12 @@ const PublicLayout = ({ children }: { children: any }) => {
           );
         })}
         <div className="mx-1 hover:underline">
-          {status == "authenticated" && <Link href="private">Private</Link>}
-          {status == "unauthenticated" && (
+          {status == 'authenticated' && <Link href="private">Private</Link>}
+          {status == 'unauthenticated' && (
             <button
               className="hover:underline"
               onClick={() => {
-                signIn(undefined, { callbackUrl: "/private" });
+                signIn(undefined, { callbackUrl: '/private' });
               }}
             >
               Sign in

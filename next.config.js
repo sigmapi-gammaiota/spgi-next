@@ -4,20 +4,20 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/",
-        destination: "/public",
+        source: '/',
+        destination: '/public',
       },
       {
-        source: "/about",
-        destination: "/public/about",
+        source: '/about',
+        destination: '/public/about',
       },
       {
-        source: "/philanthropy",
-        destination: "/public/philanthropy",
+        source: '/philanthropy',
+        destination: '/public/philanthropy',
       },
       {
-        source: "/rush",
-        destination: "/public/rush",
+        source: '/rush',
+        destination: '/public/rush',
       },
     ];
   },

@@ -1,8 +1,8 @@
-import { MessageProps } from "@components/Message";
-import { PrismaClient } from "@prisma/client";
-import { Session } from "next-auth";
-import { getSession, GetSessionParams } from "next-auth/react";
-import { AllPrivateLinks } from "./RoleRouter";
+import { MessageProps } from '@components/Message';
+import { PrismaClient } from '@prisma/client';
+import { Session } from 'next-auth';
+import { getSession, GetSessionParams } from 'next-auth/react';
+import { AllPrivateLinks } from './RoleRouter';
 
 const prisma = new PrismaClient();
 export interface PrivateProps {
@@ -38,8 +38,11 @@ export async function getPrivateProps(
 
     AllPrivateLinks.map((privateLink) => {
       //for each link in all private links
-      if (privateLink.roles.includes("ALL")) {
-        userLinks.push({ text: privateLink.text, href: privateLink.href }); //add link if available to all
+      if (privateLink.roles.includes('ALL')) {
+        userLinks.push({
+          text: privateLink.text,
+          href: privateLink.href,
+        }); //add link if available to all
       }
 
       //if not available to all
@@ -53,7 +56,10 @@ export async function getPrivateProps(
           })
         ) {
           //add link to userLinks on true
-          userLinks.push({ text: privateLink.text, href: privateLink.href });
+          userLinks.push({
+            text: privateLink.text,
+            href: privateLink.href,
+          });
         }
       });
     });
@@ -61,7 +67,7 @@ export async function getPrivateProps(
 
   let props: PrivateProps = {
     private: priv,
-    title: "",
+    title: '',
     navLinks: userLinks,
     messages: [],
     session: session,
@@ -72,7 +78,7 @@ export async function getPrivateProps(
 export function getDefaultPublicProps(): PublicProps {
   let props: PublicProps = {
     private: false,
-    title: "",
+    title: '',
   };
   return props;
 }

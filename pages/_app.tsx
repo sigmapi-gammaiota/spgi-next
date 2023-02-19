@@ -1,9 +1,9 @@
-import PrivateLayout from "@components/PrivateLayout";
-import PublicLayout from "@components/PublicLayout";
-import "@styles/globals.css";
-import { SessionProvider } from "next-auth/react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
+import PrivateLayout from '@components/PrivateLayout';
+import PublicLayout from '@components/PublicLayout';
+import '@styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   if (pageProps.private) {
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           <Head>
             <title>
               Sigma Pi Gamma Iota
-              {pageProps.title && " - ".concat(pageProps.title)}
+              {pageProps.title && ' - '.concat(pageProps.title)}
             </title>
           </Head>
           <SessionProvider session={session}>
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <Head>
           <title>
             Sigma Pi Gamma Iota
-            {pageProps.title && " - ".concat(pageProps.title)}
+            {pageProps.title && ' - '.concat(pageProps.title)}
           </title>
         </Head>
         <SessionProvider session={session}>
