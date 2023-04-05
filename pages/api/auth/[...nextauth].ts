@@ -2,17 +2,10 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import EmailProvider from "next-auth/providers/email";
-import SlackProvider from "next-auth/providers/slack";
 
 const prisma = new PrismaClient();
 export default NextAuth({
   providers: [
-    SlackProvider({
-      //@ts-ignore
-      clientId: process.env.SLACK_CLIENT_ID,
-      //@ts-ignore
-      clientSecret: process.env.SLACK_CLIENT_SECRET,
-    }),
     EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
@@ -55,8 +48,6 @@ export default NextAuth({
             return true;
           } else return false; //user not in DB, not admin, deny signin and redirect to homepage
         }
-      } else if (profile) {
-        //todo: how slack login?
       }
       return false;
     },
