@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next/types';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let p = await getPrivateProps(ctx);
+
   if (p.private) {
     //private page
     return {

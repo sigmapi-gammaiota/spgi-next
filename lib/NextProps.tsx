@@ -1,10 +1,9 @@
 import { MessageProps } from '@components/Message';
-import { PrismaClient } from '@prisma/client';
+import { AllPrivateLinks } from '@lib/RoleRouter';
 import { Session } from 'next-auth';
 import { getSession, GetSessionParams } from 'next-auth/react';
-import { AllPrivateLinks } from './RoleRouter';
+import prisma from '@lib/Prisma';
 
-const prisma = new PrismaClient();
 export interface PrivateProps {
   private: boolean;
   title: String;
