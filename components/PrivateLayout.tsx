@@ -2,8 +2,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { Key } from "react";
 import { Url } from "url";
-import { PrivateLink } from "../lib/RoleRouter";
-import { MessageProps, Message } from "./Message";
+import { Message, MessageProps } from "./Message";
 
 interface PrivateLayoutProps {
   children: any;

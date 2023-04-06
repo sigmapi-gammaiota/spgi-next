@@ -12,12 +12,16 @@ const nextConfig = {
         destination: "/public/about",
       },
       {
-        source: "/philanthropy",
-        destination: "/public/philanthropy",
+        source: "/activities",
+        destination: "/public/activities",
       },
       {
         source: "/rush",
         destination: "/public/rush",
+      },
+      {
+        source: "/brothers",
+        destination: "/public/brothers",
       },
     ];
   },
