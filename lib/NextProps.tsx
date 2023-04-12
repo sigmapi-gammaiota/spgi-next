@@ -1,8 +1,8 @@
 import { MessageProps } from '@components/Message';
+import prisma from '@lib/Prisma';
 import { AllPrivateLinks } from '@lib/RoleRouter';
 import { Session } from 'next-auth';
 import { getSession, GetSessionParams } from 'next-auth/react';
-import prisma from '@lib/Prisma';
 
 export interface PrivateProps {
   private: boolean;
