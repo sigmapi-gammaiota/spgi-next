@@ -1,6 +1,7 @@
-import React from 'react';
-import Router from 'next/router';
 import { PartyGuestProps } from '@components/PartyGuest';
+import { Card } from '@mantine/core';
+import Link from 'next/link';
+import React from 'react';
 
 export type PartyProps = {
   id: number;
@@ -11,14 +12,13 @@ export type PartyProps = {
 
 const Party: React.FC<{ party: PartyProps }> = ({ party }) => {
   return (
-    <div
-      onClick={() =>
-        Router.push('/private/parties/[id]', `/private/parties/${party.id}`)
-      }
-    >
-      <h2>{party.name}</h2>
-      <h2>{party.id}</h2>
-    </div>
+    <Link href={`/private/parties/${party.id}`}>
+      {/* TODO: cursor-pointer not working */}
+      <Card className="cursor-pointer" shadow="sm" withBorder>
+        <h2>{party.name}</h2>
+        <h2>{party.id}</h2>
+      </Card>
+    </Link>
   );
 };
 

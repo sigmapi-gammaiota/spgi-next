@@ -1,8 +1,7 @@
-import { Anchor, Text, UnstyledButton } from "@mantine/core";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import useStyles from "@styles/styles";
-import { useHover } from "@mantine/hooks";
+import { Anchor, Text, UnstyledButton } from '@mantine/core';
+import { useHover } from '@mantine/hooks';
+import useStyles from '@styles/styles';
+import { useRouter } from 'next/router';
 
 export interface NavButtonProps {
   text: string;
@@ -11,7 +10,12 @@ export interface NavButtonProps {
   markActive?: boolean;
 }
 
-export default function NavButton({text, href="/", target="", markActive=true}: NavButtonProps) {
+export default function NavButton({
+  text,
+  href = '/',
+  target = '',
+  markActive = true,
+}: NavButtonProps) {
   const { classes } = useStyles();
   const router = useRouter();
   const { hovered, ref } = useHover();
@@ -22,9 +26,13 @@ export default function NavButton({text, href="/", target="", markActive=true}: 
         <Text
           ref={ref}
           className={
-            classes.navButton + " " +
-            (hovered ? classes.navButtonHover : "") + " " +
-            (markActive && router.pathname == href ? classes.navButtonActive : "")
+            classes.navButton +
+            ' ' +
+            (hovered ? classes.navButtonHover : '') +
+            ' ' +
+            (markActive && router.pathname == href
+              ? classes.navButtonActive
+              : '')
           }
         >
           {text}
@@ -32,4 +40,4 @@ export default function NavButton({text, href="/", target="", markActive=true}: 
       </Anchor>
     </UnstyledButton>
   );
-};
+}

@@ -1,6 +1,6 @@
-import NavButton from "@components/NavButton";
-import SignInButton from "@components/SignInButton";
-import { useSession } from "next-auth/react";
+import NavButton from '@components/NavButton';
+import SignInButton from '@components/SignInButton';
+import { useSession } from 'next-auth/react';
 
 export default function NavButtons() {
   const { status } = useSession();
@@ -12,15 +12,15 @@ export default function NavButtons() {
       <NavButton text="Service & Activities" href="/activities" />
       <NavButton text="Rush Sigma Pi" href="/rush" />
       <NavButton text="Brothers" href="/brothers" />
-      <NavButton text="Donate" href="https://paypal.me/sigmapigammaiota?locale.x=en_US" target="_blank" />
-      {
-        status == "authenticated" && 
+      <NavButton
+        text="Donate"
+        href="https://paypal.me/sigmapigammaiota?locale.x=en_US"
+        target="_blank"
+      />
+      {status == 'authenticated' && (
         <NavButton text="Private" href="/private" />
-      }
-      {
-        status == "unauthenticated" && 
-        <SignInButton />
-      }
+      )}
+      {status == 'unauthenticated' && <SignInButton />}
     </>
   );
 }

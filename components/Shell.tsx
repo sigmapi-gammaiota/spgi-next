@@ -1,10 +1,19 @@
-import AppLayout from "@components/AppLayout";
-import Logo from "@components/Logo";
-import NavButtons from "@components/NavButtons";
-import { AppShell, Burger, Container, Group, Header, MediaQuery, Navbar, Stack } from "@mantine/core";
-import { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import AppLayout from '@components/AppLayout';
+import Logo from '@components/Logo';
+import NavButtons from '@components/NavButtons';
+import {
+  AppShell,
+  Burger,
+  Container,
+  Group,
+  Header,
+  MediaQuery,
+  Navbar,
+  Stack,
+} from '@mantine/core';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function Shell(props: AppProps) {
   const { Component, pageProps } = props;
@@ -18,22 +27,21 @@ export default function Shell(props: AppProps) {
       padding={0}
       navbar={
         <>
-          {
-            opened &&
+          {opened && (
             <Navbar p="md">
               <Stack>
                 <NavButtons />
               </Stack>
             </Navbar>
-          }
+          )}
         </>
       }
       header={
         <Header height={90} px="md" py="sm">
-          <MediaQuery largerThan="md" styles={{ display: "none" }}>
+          <MediaQuery largerThan="md" styles={{ display: 'none' }}>
             <Container size="lg" p="xs">
               <Group position="apart">
-                <Logo/>
+                <Logo />
                 <Burger
                   opened={opened}
                   onClick={() => setOpened((o) => !o)}
@@ -42,10 +50,10 @@ export default function Shell(props: AppProps) {
               </Group>
             </Container>
           </MediaQuery>
-          <MediaQuery smallerThan="md" styles={{ display: "none" }}>
+          <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
             <Container size="lg" p="xs">
               <Group position="apart">
-                <Logo/>
+                <Logo />
                 <Group spacing="xl">
                   <NavButtons />
                 </Group>

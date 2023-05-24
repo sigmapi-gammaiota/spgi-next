@@ -1,31 +1,31 @@
-import Shell from "@components/Shell";
-import { MantineProvider } from "@mantine/core";
-import { AppProps } from "next/app";
+import Shell from '@components/Shell';
+import { MantineProvider } from '@mantine/core';
+import { AppProps } from 'next/app';
 
 export default function MantineApp(props: AppProps) {
-	return (
+  return (
     <MantineProvider
       withGlobalStyles
       withNormalizeCSS
       theme={{
         colors: {
           brand: [
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-            "#3F3A5F",
-          ]
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+            '#3F3A5F',
+          ],
         },
-        primaryColor: "brand",
-        fontFamily: "Lato, sans-serif",
+        primaryColor: 'brand',
+        fontFamily: 'Lato, sans-serif',
         headings: {
-          fontFamily: "Lato, sans-serif",
+          fontFamily: 'Lato, sans-serif',
           fontWeight: 100,
           lineHeight: 2,
           sizes: {
@@ -41,7 +41,7 @@ export default function MantineApp(props: AppProps) {
           Title: {
             styles: {
               root: {
-                color: "#3F3A5F"
+                color: '#3F3A5F',
               },
             },
           },
@@ -49,14 +49,14 @@ export default function MantineApp(props: AppProps) {
             styles: {
               root: {
                 paddingTop: 6,
-                paddingBottom: 6
-              }
-            }
-          }
-        }
+                paddingBottom: 6,
+              },
+            },
+          },
+        },
       }}
     >
       <Shell {...props} />
     </MantineProvider>
-	);
+  );
 }

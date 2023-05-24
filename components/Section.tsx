@@ -1,4 +1,10 @@
-import { Box, Container, MantineNumberSize, SpacingValue, SystemProp } from "@mantine/core";
+import {
+  Box,
+  Container,
+  MantineNumberSize,
+  SpacingValue,
+  SystemProp,
+} from '@mantine/core';
 
 export interface SectionProps {
   children: any;
@@ -7,12 +13,17 @@ export interface SectionProps {
   bg?: string | undefined;
 }
 
-export default function Section({ children, size="lg", p="lg", bg="" }: SectionProps) {
+export default function Section({
+  children,
+  size = 'lg',
+  p = 'lg',
+  bg = '',
+}: SectionProps) {
   return (
     <Box sx={(theme) => ({ backgroundColor: theme.colors[bg] })}>
       <Container size={size} p={p}>
-        { children }
+        {children}
       </Container>
     </Box>
   );
-};
+}

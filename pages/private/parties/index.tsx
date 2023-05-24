@@ -35,9 +35,7 @@ export default function Page(props: Props) {
     <div>
       <main>parties</main>
       {props.parties.map((party) => (
-        <div key={party.id} className="party">
-          <Party party={party} />
-        </div>
+        <Party key={party.id} party={party} />
       ))}
     </div>
   );
