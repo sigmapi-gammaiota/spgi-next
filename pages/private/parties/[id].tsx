@@ -1,8 +1,8 @@
-import { PartyProps } from '@components/Party';
 import PartyGuest from '@components/PartyGuest';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
 import { GetServerSideProps } from 'next/types';
+import PartyProps from 'util/PartyProps';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let p = await getPrivateProps(ctx);
@@ -57,7 +57,6 @@ type Props = {
 };
 
 export default function Page(props: Props) {
-  console.log(props.party);
   return (
     <div>
       <main>{props.party.name}</main>

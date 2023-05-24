@@ -1,7 +1,10 @@
-import Party, { PartyProps } from '@components/Party';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
+import { Container, Table } from '@mantine/core';
+import { Party } from '@prisma/client';
+import Link from 'next/link';
 import { GetServerSideProps } from 'next/types';
+import PartyProps from 'util/PartyProps';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let p = await getPrivateProps(ctx);
@@ -31,12 +34,26 @@ type Props = {
 };
 
 export default function Page(props: Props) {
+  const rows = props.parties.map((party) => (
+    <Link key={party.id} href={`/private/parties/${party.id}`}>
+      <tr>
+        <td>{party.name}</td>
+        <td>{party.startsAt.toLocaleString()}</td>
+      </tr>
+    </Link>
+  ));
+
   return (
-    <div>
-      <main>parties</main>
-      {props.parties.map((party) => (
-        <Party key={party.id} party={party} />
-      ))}
-    </div>
+    <Container>
+      <Table>
+        <thead>
+          <tr>
+            <th>Party Name</th>
+            <th>Party Date</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </Table>
+    </Container>
   );
 }
