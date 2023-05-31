@@ -36,7 +36,7 @@ type Props = {
 export default function Page(props: Props) {
   const rows = props.parties.map((party) => (
     <Link key={party.id} href={`/private/parties/${party.id}`}>
-      <tr>
+      <tr className="cursor-pointer hover:bg-gray-100">
         <td>{party.name}</td>
         <td>{party.startsAt.toLocaleString()}</td>
       </tr>

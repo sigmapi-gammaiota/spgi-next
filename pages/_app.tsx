@@ -1,5 +1,6 @@
 import Shell from '@components/Shell';
 import { DefaultMantineColor, MantineProvider, Tuple } from '@mantine/core';
+import '@styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -62,7 +63,6 @@ export default function App(props: AppProps) {
           headings: {
             fontFamily: 'Lato, sans-serif',
             fontWeight: 100,
-            lineHeight: 2,
             sizes: {
               h1: { fontSize: 24 },
               h2: { fontSize: 20 },
