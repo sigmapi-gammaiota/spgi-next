@@ -10,7 +10,7 @@ type ExtendedCustomColors = 'purple' | 'gold' | DefaultMantineColor;
 
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
-    colors: Record<ExtendedCustomColors, Tuple<string, 10>>;
+    colors: Record<ExtendedCustomColors, Tuple<string, 1>>;
   }
 }
 
@@ -37,30 +37,8 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           colors: {
-            purple: [
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-              '#3F3A5F',
-            ],
-            gold: [
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-              '#D2B48C',
-            ],
+            purple: ['#3F3A5F'],
+            gold: ['#D2B48C'],
           },
           primaryColor: 'purple',
           fontFamily: 'Lato, sans-serif',
