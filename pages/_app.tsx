@@ -1,6 +1,7 @@
 import Shell from '@components/Shell';
 import { DefaultMantineColor, MantineProvider, Tuple } from '@mantine/core';
 import '@styles/globals.css';
+import { getEmotionCache } from '@util/getEmotionCache';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -18,6 +19,8 @@ export default function App(props: AppProps) {
     pageProps: { session },
   } = props;
 
+  const emotionCache = getEmotionCache();
+
   return (
     <>
       <Head>
@@ -29,6 +32,7 @@ export default function App(props: AppProps) {
       </Head>
 
       <MantineProvider
+        emotionCache={emotionCache}
         withGlobalStyles
         withNormalizeCSS
         theme={{
