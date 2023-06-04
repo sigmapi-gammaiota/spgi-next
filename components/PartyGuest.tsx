@@ -14,7 +14,7 @@ const getGenderColor = (gender: string): string => {
   } else if (gender === 'FEMALE') {
     return 'bg-pink-300';
   } else {
-    return '';
+    return 'bg-green-300';
   }
 };
 
