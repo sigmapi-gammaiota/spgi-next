@@ -1,3 +1,4 @@
+import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
 import { Container, Table } from '@mantine/core';
@@ -44,7 +45,7 @@ export default function Page(props: Props) {
   ));
 
   return (
-    <Container>
+    <Section>
       <Table>
         <thead>
           <tr>
@@ -54,6 +55,6 @@ export default function Page(props: Props) {
         </thead>
         <tbody>{rows}</tbody>
       </Table>
-    </Container>
+    </Section>
   );
 }

@@ -1,4 +1,6 @@
+import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
+import { Title } from '@mantine/core';
 import { GetServerSideProps } from 'next/types';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -22,8 +24,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export default function Page() {
   return (
-    <div>
-      <main>private</main>
-    </div>
+    <Section>
+      <Title order={1}>Private Home</Title>
+    </Section>
   );
 }

@@ -1,12 +1,12 @@
-import { signOut } from 'next-auth/react';
-import Link from 'next/link';
-import { Key } from 'react';
-import { Url } from 'url';
 import { Message, MessageProps } from '@components/Message';
+import NavButton from '@components/NavButton';
+import Section from '@components/Section';
+import { Button, Group } from '@mantine/core';
+import { signOut } from 'next-auth/react';
 
 interface PrivateLayoutProps {
   children: any;
-  navLinks: { text: String; href: String }[];
+  navLinks: { text: string; href: string }[];
   messages: [MessageProps];
 }
 
@@ -17,25 +17,15 @@ const PrivateLayout = ({
 }: PrivateLayoutProps) => {
   return (
     <>
-      <header>
-        <nav className="flex">
+      <Section bg="purple">
+        <Group>
           {navLinks &&
-            navLinks.map((nl) => {
-              //todo: check "as unknown as Key", seems clunky
-              return (
-                <div
-                  key={nl.href as unknown as Key}
-                  className="mx-1 hover:underline"
-                >
-                  <Link href={nl.href as unknown as Url}>{nl.text}</Link>
-                </div>
-              );
-            })}
-          <button onClick={() => signOut()} className="mx-1 hover:underline">
-            Sign Out
-          </button>
-        </nav>
-      </header>
+            navLinks.map((navLink) => (
+              <NavButton text={navLink.text} href={navLink.href} isPrivate />
+            ))}
+          <NavButton text="Sign Out" onClick={() => signOut()} isPrivate />
+        </Group>
+      </Section>
       <div>
         {messages &&
           messages.map((m) => {

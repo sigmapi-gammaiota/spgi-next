@@ -15,7 +15,6 @@ export class PrivateLink {
 }
 
 export const AllPrivateLinks: Readonly<PrivateLink[]> = [
-  new PrivateLink('/', 'Home', ['ALL']),
-  new PrivateLink('/private', 'Private', ['ALL']),
+  new PrivateLink('/private', 'Home', ['ALL']),
   new PrivateLink('/private/parties', 'Parties', ['ALL']),
 ];

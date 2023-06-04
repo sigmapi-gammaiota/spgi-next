@@ -1,4 +1,5 @@
 import PartyGuests from '@components/PartyGuests';
+import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
 import {
@@ -85,7 +86,7 @@ export default function Page(props: Props) {
   });
 
   return (
-    <Container>
+    <Section>
       <Stack>
         <Title order={1}>{props.party.name}</Title>
 
@@ -176,6 +177,6 @@ export default function Page(props: Props) {
           </Stack>
         </MediaQuery>
       </Stack>
-    </Container>
+    </Section>
   );
 }
