@@ -22,7 +22,7 @@ export default function App(props: AppProps) {
   const emotionCache = getEmotionCache();
 
   return (
-    <>
+    <div id="app">
       <Head>
         <title>Sigma Pi Gamma Iota</title>
         <meta
@@ -77,6 +77,6 @@ export default function App(props: AppProps) {
           <Shell {...props} />
         </SessionProvider>
       </MantineProvider>
-    </>
+    </div>
   );
 }
