@@ -21,7 +21,12 @@ const PrivateLayout = ({
         <Group>
           {navLinks &&
             navLinks.map((navLink) => (
-              <NavButton text={navLink.text} href={navLink.href} isPrivate />
+              <NavButton
+                key={navLink.text}
+                text={navLink.text}
+                href={navLink.href}
+                isPrivate
+              />
             ))}
           <NavButton text="Sign Out" onClick={() => signOut()} isPrivate />
         </Group>

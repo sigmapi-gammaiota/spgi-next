@@ -5,7 +5,6 @@ import prisma from '@lib/Prisma';
 import {
   Button,
   Card,
-  Container,
   Grid,
   Group,
   Input,
@@ -73,9 +72,30 @@ type Props = {
 };
 
 export default function Page(props: Props) {
+  const validateGuestName = (guestName: string): null | string => {
+    if (!guestName || guestName.length == 0) {
+      return 'Please enter a name';
+    }
+
+    return null;
+  };
+
+  const validateGuestGender = (guestGender: string): null | string => {
+    if (!guestGender || guestGender.length == 0) {
+      return 'Please pick a gender';
+    }
+
+    return null;
+  };
+
   const addGuestForm = useForm({
     initialValues: {
       guestName: '',
+      guestGender: '',
+    },
+    validate: {
+      guestName: (value) => validateGuestName(value),
+      guestGender: (value) => validateGuestGender(value),
     },
   });
 
@@ -98,12 +118,13 @@ export default function Page(props: Props) {
             <Stack spacing="xs">
               <TextInput
                 label="Guest Name"
-                placeholder="John Doe"
+                placeholder="Full Name"
                 {...addGuestForm.getInputProps('guestName')}
               />
               <NativeSelect
                 label="Gender"
-                data={['Male', 'Female', 'Non-Binary']}
+                data={['', 'Male', 'Female', 'Non-Binary']}
+                {...addGuestForm.getInputProps('guestGender')}
               />
               <Group position="right">
                 <Button type="submit" color="blue">
