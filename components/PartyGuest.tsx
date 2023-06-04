@@ -1,4 +1,4 @@
-import { Card } from '@mantine/core';
+import { Card, Text } from '@mantine/core';
 import React from 'react';
 
 export type PartyGuestProps = {
@@ -26,10 +26,10 @@ const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
       radius="lg"
       withBorder
     >
-      <h2>{guest.name}</h2>
-      <h2>Added by {guest.addedBy.name}</h2>
-      <h2>{guest.gender}</h2>
-      <h2>{guest.isPreparty}</h2>
+      <Text size="lg" weight={700}>
+        {guest.name}
+      </Text>
+      <Text>Added by {guest.addedBy.name}</Text>
     </Card>
   );
 };

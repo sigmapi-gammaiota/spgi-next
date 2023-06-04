@@ -1,7 +1,22 @@
-import PartyGuest from '@components/PartyGuest';
+import PartyGuests from '@components/PartyGuests';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Group,
+  Input,
+  MediaQuery,
+  NativeSelect,
+  Stack,
+  TextInput,
+  Title,
+} from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { GetServerSideProps } from 'next/types';
+import { FaSearch } from 'react-icons/fa';
 import PartyProps from 'util/PartyProps';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -57,14 +72,110 @@ type Props = {
 };
 
 export default function Page(props: Props) {
+  const addGuestForm = useForm({
+    initialValues: {
+      guestName: '',
+    },
+  });
+
+  const searchForm = useForm({
+    initialValues: {
+      search: '',
+    },
+  });
+
   return (
-    <div>
-      <main>{props.party.name}</main>
-      {props.party.guests.map((guest) => (
-        <div key={guest.name} className="guest">
-          <PartyGuest guest={guest} />
-        </div>
-      ))}
-    </div>
+    <Container>
+      <Stack>
+        <Title order={1}>{props.party.name}</Title>
+
+        {/* Add Guest Form */}
+        <Card className="bg-gray-100" shadow="sm" radius="md" withBorder>
+          <form
+            onSubmit={addGuestForm.onSubmit((values) => console.log(values))}
+          >
+            <Stack spacing="xs">
+              <TextInput
+                label="Guest Name"
+                placeholder="John Doe"
+                {...addGuestForm.getInputProps('guestName')}
+              />
+              <NativeSelect
+                label="Gender"
+                data={['Male', 'Female', 'Non-Binary']}
+              />
+              <Group position="right">
+                <Button type="submit" color="blue">
+                  Add Guest
+                </Button>
+              </Group>
+            </Stack>
+          </form>
+        </Card>
+
+        {/* Search Form */}
+        <form onSubmit={searchForm.onSubmit((values) => console.log(values))}>
+          <Group>
+            <Input
+              icon={<FaSearch />}
+              className="flex-grow"
+              placeholder="Search by Guest or Brother Name"
+              {...searchForm.getInputProps('search')}
+            />
+            <Button type="submit" color="blue">
+              Search
+            </Button>
+          </Group>
+        </form>
+
+        {/* For large screens, display guests in three columns */}
+        <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
+          <Grid>
+            <Grid.Col span={4}>
+              <PartyGuests
+                title="Male Guests"
+                filter="MALE"
+                guests={props.party.guests}
+              />
+            </Grid.Col>
+            <Grid.Col span={4}>
+              <PartyGuests
+                title="Female Guests"
+                filter="FEMALE"
+                guests={props.party.guests}
+              />
+            </Grid.Col>
+            <Grid.Col span={4}>
+              <PartyGuests
+                title="Non-Binary Guests"
+                filter="NON_BINARY"
+                guests={props.party.guests}
+              />
+            </Grid.Col>
+          </Grid>
+        </MediaQuery>
+
+        {/* For small screens, display guests in one stack */}
+        <MediaQuery largerThan="md" styles={{ display: 'none' }}>
+          <Stack>
+            <PartyGuests
+              title="Male Guests"
+              filter="MALE"
+              guests={props.party.guests}
+            />
+            <PartyGuests
+              title="Female Guests"
+              filter="FEMALE"
+              guests={props.party.guests}
+            />
+            <PartyGuests
+              title="Non-Binary Guests"
+              filter="NON_BINARY"
+              guests={props.party.guests}
+            />
+          </Stack>
+        </MediaQuery>
+      </Stack>
+    </Container>
   );
 }
