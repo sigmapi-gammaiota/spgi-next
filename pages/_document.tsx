@@ -1,5 +1,5 @@
 import { createStylesServer, ServerStyles } from '@mantine/next';
-import { getEmotionCache } from '@util/getEmotionCache';
+import getEmotionCache from '@util/getEmotionCache';
 import Document, {
   DocumentContext,
   DocumentInitialProps,

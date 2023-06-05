@@ -1,7 +1,7 @@
 import Shell from '@components/Shell';
 import { DefaultMantineColor, MantineProvider, Tuple } from '@mantine/core';
 import '@styles/globals.css';
-import { getEmotionCache } from '@util/getEmotionCache';
+import getEmotionCache from '@util/getEmotionCache';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';

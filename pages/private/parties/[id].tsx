@@ -15,6 +15,8 @@ import {
   Title,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { Gender, PartyGuest } from '@prisma/client';
+import getGender from '@util/getGender';
 import { GetServerSideProps } from 'next/types';
 import { FaSearch } from 'react-icons/fa';
 import PartyProps from 'util/PartyProps';
@@ -71,17 +73,31 @@ type Props = {
   party: PartyProps;
 };
 
+type AddGuestFormValues = {
+  name: string;
+  gender: string;
+};
+
+type AddGuestBody = {
+  name: string;
+  addedAt: Date;
+  gender: Gender;
+  isPreparty: boolean;
+  wasVouchedFor: boolean;
+  invitedToPartyId: number;
+};
+
 export default function Page(props: Props) {
-  const validateGuestName = (guestName: string): null | string => {
-    if (!guestName || guestName.length == 0) {
+  const validateGuestName = (name: string): null | string => {
+    if (!name || name.length == 0) {
       return 'Please enter a name';
     }
 
     return null;
   };
 
-  const validateGuestGender = (guestGender: string): null | string => {
-    if (!guestGender || guestGender.length == 0) {
+  const validateGuestGender = (gender: string): null | string => {
+    if (!gender || gender.length == 0) {
       return 'Please pick a gender';
     }
 
@@ -90,12 +106,12 @@ export default function Page(props: Props) {
 
   const addGuestForm = useForm({
     initialValues: {
-      guestName: '',
-      guestGender: '',
+      name: '',
+      gender: '',
     },
     validate: {
-      guestName: (value) => validateGuestName(value),
-      guestGender: (value) => validateGuestGender(value),
+      name: (value) => validateGuestName(value),
+      gender: (value) => validateGuestGender(value),
     },
   });
 
@@ -105,6 +121,27 @@ export default function Page(props: Props) {
     },
   });
 
+  // TODO: Add borrowing invites
+  const addGuest = async (values: AddGuestFormValues) => {
+    try {
+      const body: AddGuestBody = {
+        name: values.name,
+        addedAt: new Date(Date.now()),
+        gender: getGender(values.gender),
+        isPreparty: false, // TODO
+        wasVouchedFor: false, // TODO
+        invitedToPartyId: props.party.id,
+      };
+      await fetch('/api/guest', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Section>
       <Stack>
@@ -113,18 +150,19 @@ export default function Page(props: Props) {
         {/* Add Guest Form */}
         <Card className="bg-gray-100" shadow="sm" radius="md" withBorder>
           <form
-            onSubmit={addGuestForm.onSubmit((values) => console.log(values))}
+            // onSubmit={addGuestForm.onSubmit((values) => console.log(values))}
+            onSubmit={addGuestForm.onSubmit((values) => addGuest(values))}
           >
             <Stack spacing="xs">
               <TextInput
                 label="Guest Name"
                 placeholder="Full Name"
-                {...addGuestForm.getInputProps('guestName')}
+                {...addGuestForm.getInputProps('name')}
               />
               <NativeSelect
                 label="Gender"
                 data={['', 'Male', 'Female', 'Non-Binary']}
-                {...addGuestForm.getInputProps('guestGender')}
+                {...addGuestForm.getInputProps('gender')}
               />
               <Group position="right">
                 <Button type="submit" color="blue">
