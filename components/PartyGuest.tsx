@@ -1,4 +1,5 @@
-import { Card, Text } from '@mantine/core';
+import { Card, CloseButton, Group, Stack, Text } from '@mantine/core';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 export type PartyGuestProps = {
@@ -6,6 +7,7 @@ export type PartyGuestProps = {
   gender: string;
   isPreparty: boolean;
   addedBy: { name: string };
+  usingInvite: { name: string };
 };
 
 const getGenderColor = (gender: string): string => {
@@ -19,6 +21,29 @@ const getGenderColor = (gender: string): string => {
 };
 
 const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
+  const { data } = useSession();
+
+  const isBorrowingInvite = (): boolean => {
+    return guest.addedBy.name != guest.usingInvite.name;
+  };
+
+  const canRemove = (): boolean => {
+    return (
+      guest.addedBy.name === data?.user?.name ||
+      guest.usingInvite.name === data?.user?.name
+    );
+  };
+
+  const removeGuest = async (id: string) => {
+    try {
+      await fetch(`/api/guest/${id}`, {
+        method: 'DELETE',
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Card
       className={getGenderColor(guest.gender)}
@@ -26,10 +51,27 @@ const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
       radius="lg"
       withBorder
     >
-      <Text size="lg" weight={700}>
-        {guest.name}
-      </Text>
-      <Text>Added by {guest.addedBy.name}</Text>
+      <Group align="flex-start">
+        <Stack className="flex-grow gap-0">
+          <Text size="lg" weight={700}>
+            {guest.name}
+          </Text>
+          <Text>Added by {guest.addedBy.name}</Text>
+          {isBorrowingInvite() && (
+            <Text className="mt-[-1rem]" italic>
+              Using invite from {guest.usingInvite.name}
+            </Text>
+          )}
+        </Stack>
+        {canRemove() && (
+          <CloseButton
+            title="Remove Guest"
+            variant="outline"
+            color="black"
+            size="xl"
+          />
+        )}
+      </Group>
     </Card>
   );
 };
