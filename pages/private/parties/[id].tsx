@@ -1,3 +1,4 @@
+import { PartyGuestProps } from '@components/PartyGuest';
 import PartyGuests from '@components/PartyGuests';
 import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
@@ -15,8 +16,10 @@ import {
   Title,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { Gender, PartyGuest } from '@prisma/client';
+import { useSetState } from '@mantine/hooks';
+import { Gender } from '@prisma/client';
 import getGender from '@util/getGender';
+import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next/types';
 import { FaSearch } from 'react-icons/fa';
 import PartyProps from 'util/PartyProps';
@@ -88,10 +91,16 @@ type AddGuestBody = {
 };
 
 export default function Page(props: Props) {
+  const router = useRouter();
+
   const validateGuestName = (name: string): null | string => {
     if (!name || name.length == 0) {
       return 'Please enter a name';
     }
+
+    // TODO: Check that guest is not already on the list
+
+    // TODO: Check that guest is not on the blacklist
 
     return null;
   };
@@ -132,11 +141,16 @@ export default function Page(props: Props) {
         wasVouchedFor: false, // TODO
         invitedToPartyId: props.party.id,
       };
-      await fetch('/api/guest', {
+      const res = await fetch('/api/guest', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
+
+      if (res.status < 300) {
+        router.replace(router.asPath);
+        addGuestForm.reset();
+      }
     } catch (error) {
       console.error(error);
     }
