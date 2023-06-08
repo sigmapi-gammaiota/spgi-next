@@ -1,4 +1,3 @@
-import { PartyGuestProps } from '@components/PartyGuest';
 import PartyGuests from '@components/PartyGuests';
 import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
@@ -16,7 +15,6 @@ import {
   Title,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useSetState } from '@mantine/hooks';
 import { Gender } from '@prisma/client';
 import getGender from '@util/getGender';
 import { useRouter } from 'next/router';
@@ -38,6 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           gender: true,
           isPreparty: true,
           wasVouchedFor: true,
+          invitedToPartyId: true,
           addedBy: {
             select: {
               name: true,
@@ -87,7 +86,6 @@ type AddGuestBody = {
   gender: Gender;
   isPreparty: boolean;
   wasVouchedFor: boolean;
-  invitedToPartyId: number;
 };
 
 export default function Page(props: Props) {
@@ -139,10 +137,9 @@ export default function Page(props: Props) {
         gender: getGender(values.gender),
         isPreparty: false, // TODO
         wasVouchedFor: false, // TODO
-        invitedToPartyId: props.party.id,
       };
-      const res = await fetch('/api/guest', {
-        method: 'PUT',
+      const res = await fetch(`/api/parties/${props.party.id}/guests`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });

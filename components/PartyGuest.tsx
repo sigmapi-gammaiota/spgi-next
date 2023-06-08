@@ -1,11 +1,13 @@
 import { Card, CloseButton, Group, Stack, Text } from '@mantine/core';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 export type PartyGuestProps = {
   name: string;
   gender: string;
   isPreparty: boolean;
+  invitedToPartyId: number;
   addedBy: { name: string };
   usingInvite: { name: string };
 };
@@ -22,6 +24,7 @@ const getGenderColor = (gender: string): string => {
 
 const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
   const { data } = useSession();
+  const router = useRouter();
 
   const isBorrowingInvite = (): boolean => {
     return guest.addedBy.name != guest.usingInvite.name;
@@ -34,11 +37,18 @@ const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
     );
   };
 
-  const removeGuest = async (id: string) => {
+  const removeGuest = async () => {
     try {
-      await fetch(`/api/guest/${id}`, {
-        method: 'DELETE',
-      });
+      const res = await fetch(
+        `/api/parties/${guest.invitedToPartyId}/guests/${guest.name}`,
+        {
+          method: 'DELETE',
+        }
+      );
+
+      if (res.status < 300) {
+        router.replace(router.asPath);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -69,6 +79,7 @@ const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
             variant="outline"
             color="black"
             size="xl"
+            onClick={() => removeGuest()}
           />
         )}
       </Group>

@@ -1,8 +1,7 @@
 import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
-import { Container, Table } from '@mantine/core';
-import { Party } from '@prisma/client';
+import { Table } from '@mantine/core';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next/types';
 import PartyProps from 'util/PartyProps';
