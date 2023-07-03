@@ -1,7 +1,7 @@
 import prisma from '@lib/Prisma';
 import { getSession } from 'next-auth/react';
 
-// POST /api/parties
+// POST /api/parties/add
 export default async function handle(req: any, res: any) {
   if (req.method === 'POST') {
     const {

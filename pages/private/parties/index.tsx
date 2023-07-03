@@ -1,7 +1,7 @@
 import Section from '@components/Section';
 import { getPrivateProps } from '@lib/NextProps';
 import prisma from '@lib/Prisma';
-import { Table } from '@mantine/core';
+import { Table, Title } from '@mantine/core';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next/types';
 import PartyProps from 'util/PartyProps';
@@ -35,7 +35,7 @@ type Props = {
 
 export default function Page(props: Props) {
   const rows = props.parties.map((party) => (
-    <Link key={party.id} href={`/private/parties/${party.id}`}>
+    <Link key={party.id} href={`/private/parties/party/${party.id}`}>
       <tr className="cursor-pointer hover:bg-gray-100">
         <td>{party.name}</td>
         <td>{party.startsAt.toLocaleString()}</td>
@@ -45,6 +45,7 @@ export default function Page(props: Props) {
 
   return (
     <Section>
+      <Title order={1}>All Parties</Title>
       <Table>
         <thead>
           <tr>

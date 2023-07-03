@@ -40,7 +40,7 @@ const PartyGuest: React.FC<{ guest: PartyGuestProps }> = ({ guest }) => {
   const removeGuest = async () => {
     try {
       const res = await fetch(
-        `/api/parties/${guest.invitedToPartyId}/guests/${guest.name}`,
+        `/api/parties/party/${guest.invitedToPartyId}/guests/${guest.name}`,
         {
           method: 'DELETE',
         }

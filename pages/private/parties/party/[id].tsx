@@ -138,7 +138,7 @@ export default function Page(props: Props) {
         isPreparty: false, // TODO
         wasVouchedFor: false, // TODO
       };
-      const res = await fetch(`/api/parties/${props.party.id}/guests`, {
+      const res = await fetch(`/api/parties/party/${props.party.id}/guests`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

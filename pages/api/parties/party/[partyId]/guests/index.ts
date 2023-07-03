@@ -1,7 +1,7 @@
 import prisma from '@lib/Prisma';
 import { getSession } from 'next-auth/react';
 
-// POST /api/parties/[partyId]/guests
+// POST /api/parties/party/[partyId]/guests
 export default async function handle(req: any, res: any) {
   if (req.method === 'POST') {
     const invitedToPartyId = Number(req.query.partyId);

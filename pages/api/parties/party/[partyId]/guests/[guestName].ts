@@ -1,7 +1,7 @@
 import prisma from '@lib/Prisma';
 import { getSession } from 'next-auth/react';
 
-// DELETE /api/parties/[partyId]/guests/[guestName]
+// DELETE /api/parties/party/[partyId]/guests/[guestName]
 export default async function handle(req: any, res: any) {
   if (req.method === 'DELETE') {
     const invitedToPartyId = Number(req.query.partyId);

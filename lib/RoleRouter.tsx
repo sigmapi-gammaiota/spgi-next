@@ -56,7 +56,7 @@ export const AllPrivateLinks: Readonly<PrivateLink[]> = [
     'STANDARDS'
   ),
   new PrivateLink(
-    'View Summons Requests',
+    'Summons Requests',
     '/private/standards/requests',
     ['ADMIN'],
     'STANDARDS'
