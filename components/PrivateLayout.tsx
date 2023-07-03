@@ -1,12 +1,10 @@
 import { Message, MessageProps } from '@components/Message';
-import NavButton from '@components/NavButton';
-import Section from '@components/Section';
-import { Button, Group } from '@mantine/core';
-import { signOut } from 'next-auth/react';
+import { PrivateNavbar } from '@components/PrivateNavbar';
+import { PrivateLink } from '@lib/RoleRouter';
 
 interface PrivateLayoutProps {
   children: any;
-  navLinks: { text: string; href: string }[];
+  navLinks: PrivateLink[];
   messages: [MessageProps];
 }
 
@@ -17,20 +15,7 @@ const PrivateLayout = ({
 }: PrivateLayoutProps) => {
   return (
     <>
-      <Section bg="purple">
-        <Group>
-          {navLinks &&
-            navLinks.map((navLink) => (
-              <NavButton
-                key={navLink.text}
-                text={navLink.text}
-                href={navLink.href}
-                isPrivate
-              />
-            ))}
-          <NavButton text="Sign Out" onClick={() => signOut()} isPrivate />
-        </Group>
-      </Section>
+      <PrivateNavbar navLinks={navLinks} />
       <div>
         {messages &&
           messages.map((m) => {

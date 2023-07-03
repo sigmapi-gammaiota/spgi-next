@@ -6,15 +6,15 @@ import { getSession, GetSessionParams } from 'next-auth/react';
 
 export interface PrivateProps {
   private: boolean;
-  title: String;
-  navLinks: { text: String; href: String }[]; //instead of passing PrivateLink we need to use json to be serializeable >:(
+  title: string;
+  navLinks: { text: string; href: string; group: string }[]; //instead of passing PrivateLink we need to use json to be serializeable >:(
   messages: [MessageProps?];
   session: Session | null;
 }
 
 export interface PublicProps {
   private: boolean;
-  title: String;
+  title: string;
 }
 
 /**
@@ -27,7 +27,7 @@ export async function getPrivateProps(
 ): Promise<PrivateProps> {
   let session = await getSession(ctx); //grab session for SessionProvider
   let priv = session ? true : false; //private determined by session
-  let userLinks: { text: String; href: String }[] = [];
+  let userLinks: { text: string; href: string; group: string }[] = [];
 
   if (priv && session) {
     let userRoles = await prisma.user.findFirst({
@@ -35,12 +35,14 @@ export async function getPrivateProps(
       select: { roles: true },
     });
 
+    // TODO: fix
     AllPrivateLinks.map((privateLink) => {
       //for each link in all private links
       if (privateLink.roles.includes('ALL')) {
         userLinks.push({
           text: privateLink.text,
           href: privateLink.href,
+          group: privateLink.group,
         }); //add link if available to all
       }
 
@@ -58,6 +60,7 @@ export async function getPrivateProps(
           userLinks.push({
             text: privateLink.text,
             href: privateLink.href,
+            group: privateLink.group,
           });
         }
       });

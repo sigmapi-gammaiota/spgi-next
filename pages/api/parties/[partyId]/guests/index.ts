@@ -7,6 +7,8 @@ export default async function handle(req: any, res: any) {
     const invitedToPartyId = Number(req.query.partyId);
     const { name, addedAt, gender, isPreparty, wasVouchedFor } = req.body;
 
+    // TODO: check that guest does not already exist
+
     const session = await getSession({ req });
     const user = await prisma.user.findFirst({
       where: { name: session?.user?.name },
@@ -14,7 +16,6 @@ export default async function handle(req: any, res: any) {
     });
 
     // TODO: check that party list is open
-
     // TODO: check that user has enough invites
 
     const result = await prisma.partyGuest.create({

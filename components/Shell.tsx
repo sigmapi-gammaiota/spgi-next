@@ -16,7 +16,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Shell(props: AppProps) {
-  const { Component, pageProps } = props;
   const [opened, setOpened] = useState(false);
   const dynamicRoute = useRouter().asPath;
 
