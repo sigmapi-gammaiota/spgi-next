@@ -3,12 +3,11 @@ import {
   Box,
   Collapse,
   Group,
-  Text,
   ThemeIcon,
   UnstyledButton,
 } from '@mantine/core';
 import { useState } from 'react';
-import { ChevronRight } from 'tabler-icons-react';
+import { TbChevronRight } from 'react-icons/tb';
 
 export interface NavbarLinksGroupProps {
   text: string;
@@ -41,7 +40,7 @@ export function NavbarLinksGroup({
         <Box ml="md">{text}</Box>
       </Box>
       {hasLinks && (
-        <ChevronRight
+        <TbChevronRight
           size="1rem"
           style={{
             transform: opened ? 'rotate(90deg)' : 'none',

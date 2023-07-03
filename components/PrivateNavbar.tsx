@@ -1,24 +1,42 @@
 import { NavbarLinksGroup } from '@components/NavbarLinksGroup';
-import { Navbar, ScrollArea } from '@mantine/core';
-import { TbGavel } from 'react-icons/tb';
-import { Beer, Books, Home, School } from 'tabler-icons-react';
+import {
+  Anchor,
+  Divider,
+  Group,
+  Navbar,
+  ScrollArea,
+  Text,
+  UnstyledButton,
+} from '@mantine/core';
+import { signOut } from 'next-auth/react';
+import {
+  TbArrowBackUp,
+  TbBeer,
+  TbBooks,
+  TbGavel,
+  TbHome,
+  TbLogout,
+  TbSchool,
+} from 'react-icons/tb';
 
 export interface PrivateNavbarProps {
   navLinks: { text: string; href: string; group: string }[];
+  hidden?: boolean;
 }
 
-export function PrivateNavbar({ navLinks }: PrivateNavbarProps) {
+export function PrivateNavbar({ navLinks, hidden }: PrivateNavbarProps) {
+  console.log(hidden);
   return (
-    <Navbar height={800} width={{ sm: 300 }} p="md">
+    <Navbar width={{ sm: 300 }} p="md" hiddenBreakpoint="sm" hidden={hidden}>
       <Navbar.Section grow component={ScrollArea}>
         <NavbarLinksGroup
           text="Home"
-          icon={Home}
+          icon={TbHome}
           href={navLinks.find((navLink) => navLink.group == 'HOME')?.href}
         />
         <NavbarLinksGroup
           text="Parties"
-          icon={Beer}
+          icon={TbBeer}
           links={navLinks.filter((navLink) => navLink.group == 'PARTIES')}
         />
         <NavbarLinksGroup
@@ -28,14 +46,29 @@ export function PrivateNavbar({ navLinks }: PrivateNavbarProps) {
         />
         <NavbarLinksGroup
           text="Scholarship"
-          icon={School}
+          icon={TbSchool}
           links={navLinks.filter((navLink) => navLink.group == 'SCHOLARSHIP')}
         />
         <NavbarLinksGroup
           text="Archives"
-          icon={Books}
+          icon={TbBooks}
           links={navLinks.filter((navLink) => navLink.group == 'ARCHIVES')}
         />
+      </Navbar.Section>
+      <Navbar.Section>
+        <Divider />
+        <Anchor href="/" variant="text">
+          <Group>
+            <TbArrowBackUp />
+            <Text>Back to Public</Text>
+          </Group>
+        </Anchor>
+        <UnstyledButton onClick={() => signOut()}>
+          <Group>
+            <TbLogout />
+            <Text>Logout</Text>
+          </Group>
+        </UnstyledButton>
       </Navbar.Section>
     </Navbar>
   );

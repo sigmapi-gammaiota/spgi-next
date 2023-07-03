@@ -1,3 +1,4 @@
+import AppLayout from '@components/AppLayout';
 import Shell from '@components/Shell';
 import { DefaultMantineColor, MantineProvider, Tuple } from '@mantine/core';
 import '@styles/globals.css';
@@ -74,7 +75,7 @@ export default function App(props: AppProps) {
         }}
       >
         <SessionProvider session={session}>
-          <Shell {...props} />
+          <AppLayout {...props} />
         </SessionProvider>
       </MantineProvider>
     </div>

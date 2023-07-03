@@ -24,6 +24,13 @@ export default function NavButton({
   const router = useRouter();
   const { hovered, ref } = useHover();
 
+  const isActive = (): boolean => {
+    if (router.pathname === '/public' && href === '/') {
+      return true;
+    }
+    return router.pathname === '/public' + href;
+  };
+
   return (
     <UnstyledButton onClick={onClick}>
       <Anchor href={href} target={target} variant="text">
@@ -34,9 +41,7 @@ export default function NavButton({
             ' ' +
             (hovered ? classes.navButtonHover : '') +
             ' ' +
-            (markActive && router.pathname == href
-              ? classes.navButtonActive
-              : '') +
+            (markActive && isActive() ? classes.navButtonActive : '') +
             ' ' +
             (isPrivate && 'text-white')
           }
